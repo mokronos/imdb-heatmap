@@ -1,0 +1,24 @@
+name: Run Script
+
+on:
+  push:
+    branches: [ main ]
+jobs:
+
+  create:
+    name: create dataset
+    runs-on: ubuntu-latest
+    if: ${{false}}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - run: |
+          python main.py
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add countries.csv
+          git commit -m "updated data"
+          git push
+

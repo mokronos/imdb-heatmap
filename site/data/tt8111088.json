@@ -1,0 +1,70 @@
+[
+    [
+        {
+            "episode": 1,
+            "rating": 2
+        },
+        {
+            "episode": 2,
+            "rating": 3
+        },
+        {
+            "episode": 3,
+            "rating": 5
+        },
+        {
+            "episode": 4,
+            "rating": 4
+        },
+        {
+            "episode": 5,
+            "rating": 6
+        },
+        {
+            "episode": 6,
+            "rating": 9
+        },
+        {
+            "episode": 7,
+            "rating": 7.2
+        },
+        {
+            "episode": 8,
+            "rating": 9.9
+        }
+    ],
+    [
+        {
+            "episode": 1,
+            "rating": 0
+        },
+        {
+            "episode": 2,
+            "rating": 1
+        },
+        {
+            "episode": 3,
+            "rating": 8.1
+        },
+        {
+            "episode": 4,
+            "rating": 8.1
+        },
+        {
+            "episode": 5,
+            "rating": 8.1
+        },
+        {
+            "episode": 6,
+            "rating": 8.1
+        },
+        {
+            "episode": 7,
+            "rating": 8.1
+        },
+        {
+            "episode": 8,
+            "rating": 8.1
+        }
+    ]
+]

@@ -1,0 +1,42 @@
+name: Run Script
+
+on:
+  push:
+    branches: [ main ]
+jobs:
+
+  create:
+    name: create dataset
+    runs-on: ubuntu-latest
+    if: ${{false}}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - run: |
+          python main.py
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add countries.csv
+          git commit -m "updated data"
+          git push
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    # if: ${{false}}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ATiltedTree/setup-rust@v1
+        with:
+          rust-version: stable
+      - run: |
+          cargo install trunk
+          rustup target add wasm32-unknown-unknown
+          cd site
+          trunk build --release --public-url showheatmap
+          
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site/dist
