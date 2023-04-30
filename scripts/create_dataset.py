@@ -8,7 +8,7 @@ NAMES_URL = "https://datasets.imdbws.com/title.basics.tsv.gz"
 
 DATA_DIR = "data/"
 
-NUM_SHOWS = 4
+NUM_SHOWS = 100
 
 
 def gen_idtitle(parent_votes, names):
