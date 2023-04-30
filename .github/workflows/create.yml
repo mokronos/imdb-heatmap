@@ -28,7 +28,7 @@ jobs:
           python scripts/create_dataset.py
       - name: check if successful, then commit
         run: |
-          if [ -f done]; then
+          if [ -f done ]; then
             echo "generated dataset successfully"
             git config user.name github-actions
             git config user.email github-actions@github.com
