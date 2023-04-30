@@ -26,6 +26,7 @@ jobs:
       - name: clean dir
         run: |
           git rm data/*
+          mkdir data
           ls data
       - name: Run script
         run: |
