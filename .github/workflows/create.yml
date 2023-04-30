@@ -25,7 +25,8 @@ jobs:
           pip install -r requirements.txt
       - name: clean dir
         run: |
-          find data -type f -delete
+          git rm data/*
+          ls data
       - name: Run script
         run: |
           python scripts/create_dataset.py
