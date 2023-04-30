@@ -1,0 +1,702 @@
+[
+    [
+        {
+            "episode": 1,
+            "rating": 7.8
+        },
+        {
+            "episode": 2,
+            "rating": 7.5
+        },
+        {
+            "episode": 3,
+            "rating": 7.9
+        },
+        {
+            "episode": 4,
+            "rating": 7.9
+        },
+        {
+            "episode": 5,
+            "rating": 8.2
+        },
+        {
+            "episode": 6,
+            "rating": 8.4
+        },
+        {
+            "episode": 7,
+            "rating": 8.2
+        },
+        {
+            "episode": 8,
+            "rating": 8.3
+        },
+        {
+            "episode": 9,
+            "rating": 8.1
+        },
+        {
+            "episode": 10,
+            "rating": 8.3
+        },
+        {
+            "episode": 11,
+            "rating": 8.2
+        },
+        {
+            "episode": 12,
+            "rating": 8.1
+        },
+        {
+            "episode": 13,
+            "rating": 8.3
+        },
+        {
+            "episode": 14,
+            "rating": 8.6
+        },
+        {
+            "episode": 15,
+            "rating": 8.0
+        },
+        {
+            "episode": 16,
+            "rating": 7.9
+        },
+        {
+            "episode": 17,
+            "rating": 8.6
+        },
+        {
+            "episode": 18,
+            "rating": 8.1
+        },
+        {
+            "episode": 19,
+            "rating": 8.3
+        },
+        {
+            "episode": 20,
+            "rating": 8.2
+        },
+        {
+            "episode": 21,
+            "rating": 8.4
+        },
+        {
+            "episode": 22,
+            "rating": 9.2
+        }
+    ],
+    [
+        {
+            "episode": 1,
+            "rating": 8.9
+        },
+        {
+            "episode": 2,
+            "rating": 8.5
+        },
+        {
+            "episode": 3,
+            "rating": 8.3
+        },
+        {
+            "episode": 4,
+            "rating": 8.1
+        },
+        {
+            "episode": 5,
+            "rating": 8.6
+        },
+        {
+            "episode": 6,
+            "rating": 8.5
+        },
+        {
+            "episode": 7,
+            "rating": 9.0
+        },
+        {
+            "episode": 8,
+            "rating": 8.8
+        },
+        {
+            "episode": 9,
+            "rating": 8.5
+        },
+        {
+            "episode": 10,
+            "rating": 8.3
+        },
+        {
+            "episode": 11,
+            "rating": 8.5
+        },
+        {
+            "episode": 12,
+            "rating": 8.4
+        },
+        {
+            "episode": 13,
+            "rating": 8.1
+        },
+        {
+            "episode": 14,
+            "rating": 8.0
+        },
+        {
+            "episode": 15,
+            "rating": 8.3
+        },
+        {
+            "episode": 16,
+            "rating": 8.5
+        },
+        {
+            "episode": 17,
+            "rating": 8.3
+        },
+        {
+            "episode": 18,
+            "rating": 8.7
+        },
+        {
+            "episode": 19,
+            "rating": 8.8
+        },
+        {
+            "episode": 20,
+            "rating": 8.7
+        },
+        {
+            "episode": 21,
+            "rating": 9.1
+        },
+        {
+            "episode": 22,
+            "rating": 8.9
+        }
+    ],
+    [
+        {
+            "episode": 1,
+            "rating": 8.5
+        },
+        {
+            "episode": 2,
+            "rating": 8.5
+        },
+        {
+            "episode": 3,
+            "rating": 8.7
+        },
+        {
+            "episode": 4,
+            "rating": 8.3
+        },
+        {
+            "episode": 5,
+            "rating": 9.0
+        },
+        {
+            "episode": 6,
+            "rating": 8.4
+        },
+        {
+            "episode": 7,
+            "rating": 8.5
+        },
+        {
+            "episode": 8,
+            "rating": 8.7
+        },
+        {
+            "episode": 9,
+            "rating": 8.9
+        },
+        {
+            "episode": 10,
+            "rating": 8.3
+        },
+        {
+            "episode": 11,
+            "rating": 8.2
+        },
+        {
+            "episode": 12,
+            "rating": 8.2
+        },
+        {
+            "episode": 13,
+            "rating": 8.6
+        },
+        {
+            "episode": 14,
+            "rating": 8.6
+        },
+        {
+            "episode": 15,
+            "rating": 8.3
+        },
+        {
+            "episode": 16,
+            "rating": 7.8
+        },
+        {
+            "episode": 17,
+            "rating": 7.9
+        },
+        {
+            "episode": 18,
+            "rating": 8.4
+        },
+        {
+            "episode": 19,
+            "rating": 8.6
+        },
+        {
+            "episode": 20,
+            "rating": 8.4
+        },
+        {
+            "episode": 21,
+            "rating": 8.5
+        },
+        {
+            "episode": 22,
+            "rating": 9.4
+        }
+    ],
+    [
+        {
+            "episode": 1,
+            "rating": 8.7
+        },
+        {
+            "episode": 2,
+            "rating": 8.7
+        },
+        {
+            "episode": 3,
+            "rating": 8.4
+        },
+        {
+            "episode": 4,
+            "rating": 8.4
+        },
+        {
+            "episode": 5,
+            "rating": 8.2
+        },
+        {
+            "episode": 6,
+            "rating": 8.3
+        },
+        {
+            "episode": 7,
+            "rating": 8.7
+        },
+        {
+            "episode": 8,
+            "rating": 8.3
+        },
+        {
+            "episode": 9,
+            "rating": 8.6
+        },
+        {
+            "episode": 10,
+            "rating": 8.3
+        },
+        {
+            "episode": 11,
+            "rating": 7.9
+        },
+        {
+            "episode": 12,
+            "rating": 8.5
+        },
+        {
+            "episode": 13,
+            "rating": 8.0
+        },
+        {
+            "episode": 14,
+            "rating": 8.5
+        },
+        {
+            "episode": 15,
+            "rating": 8.6
+        },
+        {
+            "episode": 16,
+            "rating": 7.6
+        },
+        {
+            "episode": 17,
+            "rating": 8.0
+        },
+        {
+            "episode": 18,
+            "rating": 8.4
+        },
+        {
+            "episode": 19,
+            "rating": 8.2
+        },
+        {
+            "episode": 20,
+            "rating": 8.6
+        },
+        {
+            "episode": 21,
+            "rating": 8.3
+        },
+        {
+            "episode": 22,
+            "rating": 8.6
+        },
+        {
+            "episode": 23,
+            "rating": 9.1
+        }
+    ],
+    [
+        {
+            "episode": 1,
+            "rating": 8.3
+        },
+        {
+            "episode": 2,
+            "rating": 7.9
+        },
+        {
+            "episode": 3,
+            "rating": 8.2
+        },
+        {
+            "episode": 4,
+            "rating": 8.1
+        },
+        {
+            "episode": 5,
+            "rating": 7.8
+        },
+        {
+            "episode": 6,
+            "rating": 7.9
+        },
+        {
+            "episode": 7,
+            "rating": 8.0
+        },
+        {
+            "episode": 8,
+            "rating": 7.7
+        },
+        {
+            "episode": 9,
+            "rating": 8.1
+        },
+        {
+            "episode": 10,
+            "rating": 7.8
+        },
+        {
+            "episode": 11,
+            "rating": 8.6
+        },
+        {
+            "episode": 12,
+            "rating": 7.8
+        },
+        {
+            "episode": 13,
+            "rating": 7.7
+        },
+        {
+            "episode": 14,
+            "rating": 7.8
+        },
+        {
+            "episode": 15,
+            "rating": 8.6
+        },
+        {
+            "episode": 16,
+            "rating": 7.7
+        },
+        {
+            "episode": 17,
+            "rating": 7.9
+        },
+        {
+            "episode": 18,
+            "rating": 7.9
+        },
+        {
+            "episode": 19,
+            "rating": 7.8
+        },
+        {
+            "episode": 20,
+            "rating": 7.6
+        },
+        {
+            "episode": 21,
+            "rating": 8.5
+        },
+        {
+            "episode": 22,
+            "rating": 8.9
+        }
+    ],
+    [
+        {
+            "episode": 1,
+            "rating": 7.7
+        },
+        {
+            "episode": 2,
+            "rating": 8.3
+        },
+        {
+            "episode": 3,
+            "rating": 7.8
+        },
+        {
+            "episode": 4,
+            "rating": 7.9
+        },
+        {
+            "episode": 5,
+            "rating": 8.6
+        },
+        {
+            "episode": 6,
+            "rating": 7.9
+        },
+        {
+            "episode": 7,
+            "rating": 8.1
+        },
+        {
+            "episode": 8,
+            "rating": 8.2
+        },
+        {
+            "episode": 9,
+            "rating": 8.0
+        },
+        {
+            "episode": 10,
+            "rating": 7.9
+        },
+        {
+            "episode": 11,
+            "rating": 7.9
+        },
+        {
+            "episode": 12,
+            "rating": 8.1
+        },
+        {
+            "episode": 13,
+            "rating": 8.0
+        },
+        {
+            "episode": 14,
+            "rating": 8.3
+        },
+        {
+            "episode": 15,
+            "rating": 8.6
+        },
+        {
+            "episode": 16,
+            "rating": 8.4
+        },
+        {
+            "episode": 17,
+            "rating": 8.0
+        },
+        {
+            "episode": 18,
+            "rating": 7.7
+        },
+        {
+            "episode": 19,
+            "rating": 7.9
+        },
+        {
+            "episode": 20,
+            "rating": 7.8
+        },
+        {
+            "episode": 21,
+            "rating": 8.5
+        },
+        {
+            "episode": 22,
+            "rating": 8.8
+        }
+    ],
+    [
+        {
+            "episode": 1,
+            "rating": 8.2
+        },
+        {
+            "episode": 2,
+            "rating": 8.0
+        },
+        {
+            "episode": 3,
+            "rating": 8.0
+        },
+        {
+            "episode": 4,
+            "rating": 8.1
+        },
+        {
+            "episode": 5,
+            "rating": 8.2
+        },
+        {
+            "episode": 6,
+            "rating": 8.1
+        },
+        {
+            "episode": 7,
+            "rating": 8.1
+        },
+        {
+            "episode": 8,
+            "rating": 8.2
+        },
+        {
+            "episode": 9,
+            "rating": 8.2
+        },
+        {
+            "episode": 10,
+            "rating": 8.7
+        },
+        {
+            "episode": 11,
+            "rating": 7.8
+        },
+        {
+            "episode": 12,
+            "rating": 8.0
+        },
+        {
+            "episode": 13,
+            "rating": 8.4
+        },
+        {
+            "episode": 14,
+            "rating": 8.6
+        },
+        {
+            "episode": 15,
+            "rating": 8.2
+        },
+        {
+            "episode": 16,
+            "rating": 7.9
+        },
+        {
+            "episode": 17,
+            "rating": 8.2
+        },
+        {
+            "episode": 18,
+            "rating": 7.8
+        },
+        {
+            "episode": 19,
+            "rating": 7.6
+        },
+        {
+            "episode": 20,
+            "rating": 7.7
+        },
+        {
+            "episode": 21,
+            "rating": 8.0
+        },
+        {
+            "episode": 22,
+            "rating": 8.1
+        }
+    ],
+    [
+        {
+            "episode": 1,
+            "rating": 8.3
+        },
+        {
+            "episode": 2,
+            "rating": 7.8
+        },
+        {
+            "episode": 3,
+            "rating": 8.0
+        },
+        {
+            "episode": 4,
+            "rating": 8.0
+        },
+        {
+            "episode": 5,
+            "rating": 7.7
+        },
+        {
+            "episode": 6,
+            "rating": 8.0
+        },
+        {
+            "episode": 7,
+            "rating": 7.8
+        },
+        {
+            "episode": 8,
+            "rating": 7.5
+        },
+        {
+            "episode": 9,
+            "rating": 7.9
+        },
+        {
+            "episode": 10,
+            "rating": 8.6
+        },
+        {
+            "episode": 11,
+            "rating": 8.9
+        },
+        {
+            "episode": 12,
+            "rating": 8.2
+        },
+        {
+            "episode": 13,
+            "rating": 8.1
+        },
+        {
+            "episode": 14,
+            "rating": 8.8
+        },
+        {
+            "episode": 15,
+            "rating": 8.7
+        },
+        {
+            "episode": 16,
+            "rating": 9.3
+        }
+    ]
+]
