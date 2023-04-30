@@ -58,7 +58,7 @@ def gen_season_ratings(parent_id, ratings, episodes):
             else:
                 episode_rating = episode_rating.iloc[0]
 
-            data = {"episode": episode_number, "rating": episode_rating}
+            data = {"episode": episode_number, "rating": episode_rating, "id": episode}
             season_ratings.append(data)
 
         show_ratings.append(season_ratings)
