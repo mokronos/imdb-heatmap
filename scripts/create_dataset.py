@@ -20,7 +20,7 @@ def gen_idtitle(parent_votes, names):
 
     print("generated title_ids overview")
 
-    with open(f"{DATA_DIR}title_ids.json", "w") as f:
+    with open(f"{DATA_DIR}titleID.json", "w") as f:
         json.dump(title_ids, f, indent=4)
 
     print("saved title_ids overview to disk")
