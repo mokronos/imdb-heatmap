@@ -29,13 +29,14 @@ jobs:
       - name: Run script
         run: |
           python scripts/create_dataset.py
+          ls data
       - name: check if successful, then commit
         run: |
           if [ -f done ]; then
             echo "generated dataset successfully"
             git config user.name github-actions
             git config user.email github-actions@github.com
-            git add -u data/*
+            git add -A data/*
             git commit -m "updated data"
             git push
           else
