@@ -1,12 +1,11 @@
 const SERIES_URL = "./data/";
 const TITLE_ID_URL = "./data/titleId.json";
-
+const NO_CACHE_SUFFIX = getSuffix();
 
 const targetTable = document.querySelector(".ratingsTable");
 const search = document.querySelector(".search");
 const optionList = document.getElementById("search");
 const loadStatus = document.querySelector(".loadStatus");
-const no_cache_suffix = getSuffix();
 
 
 function getSuffix(){
@@ -49,6 +48,7 @@ function addTableRow(episodeRatings, seasonNumber) {
     let seasonRow = document.createElement("tr");
     seasonRow.className = `season${seasonNumber}`;
     targetTable.appendChild(seasonRow);
+    episodeNum = 0;
     episodeRatings.forEach(episodeData => {
         let episodeRatingCell = document.createElement("td");
         let episodeRating = episodeData.rating;
@@ -62,7 +62,9 @@ function addTableRow(episodeRatings, seasonNumber) {
                 0)`;
 
         seasonRow.appendChild(episodeRatingCell);
+        episodeNum++;
     });
+    return episodeNum;
 }
 
 
@@ -90,12 +92,43 @@ async function createTable(titleIds) {
     const promise = await fetch(SERIES_URL + titleId + ".json");
     const allRatings = await promise.json();
     seasonNumber = 1;
+    maxEpisodes = 0;
     allRatings.forEach(seasonRatings => {
-        addTableRow(seasonRatings, seasonNumber);
+        let numEpisodes = addTableRow(seasonRatings, seasonNumber);
+        if (numEpisodes > maxEpisodes) {
+            maxEpisodes = numEpisodes;
+        }
         seasonNumber++;
     });
+    addGuide(seasonNumber - 1, maxEpisodes);
 }
 
+function addGuide(maxSeasons, maxEpisodes) {
+    let guideRow = document.createElement("tr");
+    let guideRowCell = document.createElement("td");
+    guideRowCell.className = "guideOrigin";
+    // guideRowCell.innerHTML = "";
+    guideRow.appendChild(guideRowCell);
+
+    for (let i = 0; i < maxEpisodes; i++) {
+        let guideRowCell = document.createElement("td");
+        guideRowCell.className = "guideRowCell";
+        guideRowCell.innerHTML = i + 1;
+        guideRow.appendChild(guideRowCell);
+    }
+
+    guideRow.className = "guideRow";
+    targetTable.insertBefore(guideRow, targetTable.firstChild);
+
+    for (let i = 0; i < maxSeasons; i++) {
+        let guideColumnCell = document.createElement("td");
+        guideColumnCell.className = "guideColumnCell";
+        guideColumnCell.innerHTML = i + 1;
+        let seasonClass = document.querySelector(`.season${i+1}`);
+        seasonClass.insertBefore(guideColumnCell, seasonClass.firstChild);
+    }
+        
+}
 
 function cleanTable() {
     while (targetTable.firstChild) {

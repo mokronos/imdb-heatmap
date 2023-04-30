@@ -1,9 +1,18 @@
+body {
+    background-color: #333;
+    color: #fff;
+}
+td, th {
+    color: #000;
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
 .loadStatus {
     color: red;
 }
 
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
+.guideColumnCell, .guideRowCell {
+    background-color: #474540;
 }
