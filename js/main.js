@@ -1,4 +1,3 @@
-const api_key = "k_v120oulk";
 const SERIES_URL = "./data/";
 const TITLE_ID_URL = "./data/titleId.json";
 
@@ -7,6 +6,23 @@ const targetTable = document.querySelector(".ratingsTable");
 const search = document.querySelector(".search");
 const optionList = document.getElementById("search");
 const loadStatus = document.querySelector(".loadStatus");
+const no_cache_suffix = getSuffix();
+
+
+function getSuffix(){
+    const now = new Date();
+    const hour = now.getUTCHours();
+    let day = now.getUTCDate()
+    // delay new json fetch by 6 hours after midnight UTC
+    // gives github actions 6 hours to update data
+    if (hour > 6) {
+        day--;
+    };
+    const utc_time = `${now.getUTCFullYear()}${now.getUTCMonth()}${day}`;
+    const test_suffix = `?nocache=${utc_time.toString(16)}`;
+    return test_suffix;
+}
+
 
 async function loadTopSeries() {
     let promise = await fetch(TITLE_ID_URL);
@@ -14,17 +30,20 @@ async function loadTopSeries() {
     return processedData;
 }
 
+
 function addOption(value) {
     let option = document.createElement("option");
     option.value = value;
     optionList.appendChild(option);
 }
 
+
 function addToSearch(titleIds) {
     titleIds.forEach(titleId => {
         addOption(titleId.title);
     });
 }
+
 
 function addTableRow(episodeRatings, seasonNumber) {
     let seasonRow = document.createElement("tr");
@@ -46,22 +65,30 @@ function addTableRow(episodeRatings, seasonNumber) {
     });
 }
 
+
 function findTitleId(titleIds, title) {
     for (let i = 0; i < titleIds.length; i++) {
         if (titleIds[i].title.toLowerCase() === title) {
             return titleIds[i].id;
         };
     };
+    return 0;
 }
+
 
 async function createTable(titleIds) {
     let title = search.value.toLowerCase();
     let titleId = findTitleId(titleIds, title);
-    console.log(titleId);
-    console.log(SERIES_URL + titleId + ".json");
+
+    if (titleId === 0) {
+        console.log("Title not found!");
+        loadStatus.innerHTML = "Title not found";
+        loadStatus.style.color = "red";
+        return;
+    }
+
     const promise = await fetch(SERIES_URL + titleId + ".json");
     const allRatings = await promise.json();
-    console.log(allRatings);
     seasonNumber = 1;
     allRatings.forEach(seasonRatings => {
         addTableRow(seasonRatings, seasonNumber);
@@ -69,17 +96,18 @@ async function createTable(titleIds) {
     });
 }
 
+
 function cleanTable() {
     while (targetTable.firstChild) {
         targetTable.removeChild(targetTable.firstChild);
     }
 }
 
+
 async function init() {
     const titleIds = await loadTopSeries();
     addToSearch(titleIds);
     console.log("Loaded search data");
-    console.log(titleIds);
     search.disabled = false;
     search.addEventListener("change", function() {
         cleanTable();
