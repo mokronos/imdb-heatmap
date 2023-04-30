@@ -1,0 +1,497 @@
+[
+    [
+        {
+            "episode": 1,
+            "rating": 7.3,
+            "id": "tt0504182"
+        },
+        {
+            "episode": 2,
+            "rating": 7.1,
+            "id": "tt0504158"
+        },
+        {
+            "episode": 3,
+            "rating": 7.5,
+            "id": "tt0504189"
+        },
+        {
+            "episode": 4,
+            "rating": 7.4,
+            "id": "tt0504146"
+        },
+        {
+            "episode": 5,
+            "rating": 7.7,
+            "id": "tt0504151"
+        },
+        {
+            "episode": 6,
+            "rating": 7.3,
+            "id": "tt0504217"
+        },
+        {
+            "episode": 7,
+            "rating": 7.4,
+            "id": "tt0504216"
+        },
+        {
+            "episode": 8,
+            "rating": 7.1,
+            "id": "tt0504171"
+        },
+        {
+            "episode": 9,
+            "rating": 7.1,
+            "id": "tt0504237"
+        },
+        {
+            "episode": 10,
+            "rating": 7.2,
+            "id": "tt0504187"
+        },
+        {
+            "episode": 11,
+            "rating": 7.3,
+            "id": "tt0504228"
+        },
+        {
+            "episode": 12,
+            "rating": 7.6,
+            "id": "tt0504202"
+        },
+        {
+            "episode": 13,
+            "rating": 7.5,
+            "id": "tt0504145"
+        }
+    ],
+    [
+        {
+            "episode": 1,
+            "rating": 6.7,
+            "id": "tt0504164"
+        },
+        {
+            "episode": 2,
+            "rating": 7.2,
+            "id": "tt0504192"
+        },
+        {
+            "episode": 3,
+            "rating": 7.1,
+            "id": "tt0504215"
+        },
+        {
+            "episode": 4,
+            "rating": 7.0,
+            "id": "tt0504148"
+        },
+        {
+            "episode": 5,
+            "rating": 7.4,
+            "id": "tt0504239"
+        },
+        {
+            "episode": 6,
+            "rating": 7.4,
+            "id": "tt0504240"
+        },
+        {
+            "episode": 7,
+            "rating": 7.6,
+            "id": "tt0504222"
+        },
+        {
+            "episode": 8,
+            "rating": 6.7,
+            "id": "tt0504179"
+        },
+        {
+            "episode": 9,
+            "rating": 7.2,
+            "id": "tt0504227"
+        },
+        {
+            "episode": 10,
+            "rating": 6.9,
+            "id": "tt0504236"
+        },
+        {
+            "episode": 11,
+            "rating": 7.1,
+            "id": "tt0504199"
+        },
+        {
+            "episode": 12,
+            "rating": 6.8,
+            "id": "tt0504225"
+        },
+        {
+            "episode": 13,
+            "rating": 7.1,
+            "id": "tt0504214"
+        },
+        {
+            "episode": 14,
+            "rating": 7.1,
+            "id": "tt0504173"
+        },
+        {
+            "episode": 15,
+            "rating": 7.0,
+            "id": "tt0504201"
+        },
+        {
+            "episode": 16,
+            "rating": 7.1,
+            "id": "tt0504194"
+        },
+        {
+            "episode": 17,
+            "rating": 6.8,
+            "id": "tt0504190"
+        },
+        {
+            "episode": 18,
+            "rating": 7.0,
+            "id": "tt0504175"
+        },
+        {
+            "episode": 19,
+            "rating": 7.2,
+            "id": "tt0504159"
+        },
+        {
+            "episode": 20,
+            "rating": 7.1,
+            "id": "tt0504170"
+        },
+        {
+            "episode": 21,
+            "rating": 7.7,
+            "id": "tt0504163"
+        },
+        {
+            "episode": 22,
+            "rating": 6.5,
+            "id": "tt0504195"
+        },
+        {
+            "episode": 23,
+            "rating": 6.6,
+            "id": "tt0504162"
+        }
+    ],
+    [
+        {
+            "episode": 1,
+            "rating": 7.2,
+            "id": "tt0504156"
+        },
+        {
+            "episode": 2,
+            "rating": 6.9,
+            "id": "tt0504204"
+        },
+        {
+            "episode": 3,
+            "rating": 6.8,
+            "id": "tt0504205"
+        },
+        {
+            "episode": 4,
+            "rating": 7.2,
+            "id": "tt0504168"
+        },
+        {
+            "episode": 5,
+            "rating": 7.0,
+            "id": "tt0504229"
+        },
+        {
+            "episode": 6,
+            "rating": 7.0,
+            "id": "tt0504166"
+        },
+        {
+            "episode": 7,
+            "rating": 6.8,
+            "id": "tt0504232"
+        },
+        {
+            "episode": 8,
+            "rating": 6.8,
+            "id": "tt0504212"
+        },
+        {
+            "episode": 9,
+            "rating": 7.1,
+            "id": "tt0504197"
+        },
+        {
+            "episode": 10,
+            "rating": 6.8,
+            "id": "tt0504196"
+        },
+        {
+            "episode": 11,
+            "rating": 6.7,
+            "id": "tt0504203"
+        },
+        {
+            "episode": 12,
+            "rating": 6.6,
+            "id": "tt0504172"
+        },
+        {
+            "episode": 13,
+            "rating": 7.1,
+            "id": "tt0504155"
+        },
+        {
+            "episode": 14,
+            "rating": 7.1,
+            "id": "tt0504161"
+        },
+        {
+            "episode": 15,
+            "rating": 7.3,
+            "id": "tt0504206"
+        },
+        {
+            "episode": 16,
+            "rating": 6.9,
+            "id": "tt0504157"
+        },
+        {
+            "episode": 17,
+            "rating": 6.7,
+            "id": "tt0504198"
+        },
+        {
+            "episode": 18,
+            "rating": 6.9,
+            "id": "tt0504193"
+        },
+        {
+            "episode": 19,
+            "rating": 6.6,
+            "id": "tt0504186"
+        },
+        {
+            "episode": 20,
+            "rating": 6.9,
+            "id": "tt0504178"
+        },
+        {
+            "episode": 21,
+            "rating": 6.7,
+            "id": "tt0504235"
+        },
+        {
+            "episode": 22,
+            "rating": 7.5,
+            "id": "tt0504154"
+        },
+        {
+            "episode": 23,
+            "rating": 6.9,
+            "id": "tt0504150"
+        },
+        {
+            "episode": 24,
+            "rating": 6.7,
+            "id": "tt0504231"
+        },
+        {
+            "episode": 25,
+            "rating": 7.3,
+            "id": "tt0504174"
+        }
+    ],
+    [
+        {
+            "episode": 1,
+            "rating": 7.1,
+            "id": "tt0504176"
+        },
+        {
+            "episode": 2,
+            "rating": 7.1,
+            "id": "tt0504177"
+        },
+        {
+            "episode": 3,
+            "rating": 6.9,
+            "id": "tt0504241"
+        },
+        {
+            "episode": 4,
+            "rating": 7.5,
+            "id": "tt0504180"
+        },
+        {
+            "episode": 5,
+            "rating": 7.0,
+            "id": "tt0504218"
+        },
+        {
+            "episode": 6,
+            "rating": 6.8,
+            "id": "tt0504211"
+        },
+        {
+            "episode": 7,
+            "rating": 7.0,
+            "id": "tt0504153"
+        },
+        {
+            "episode": 8,
+            "rating": 6.9,
+            "id": "tt0504152"
+        },
+        {
+            "episode": 9,
+            "rating": 7.1,
+            "id": "tt0504184"
+        },
+        {
+            "episode": 10,
+            "rating": 7.1,
+            "id": "tt0504226"
+        },
+        {
+            "episode": 11,
+            "rating": 6.9,
+            "id": "tt0504208"
+        },
+        {
+            "episode": 12,
+            "rating": 6.5,
+            "id": "tt0504233"
+        },
+        {
+            "episode": 13,
+            "rating": 7.1,
+            "id": "tt0504238"
+        },
+        {
+            "episode": 14,
+            "rating": 6.7,
+            "id": "tt0504200"
+        },
+        {
+            "episode": 15,
+            "rating": 7.3,
+            "id": "tt0504181"
+        },
+        {
+            "episode": 16,
+            "rating": 6.9,
+            "id": "tt0504160"
+        },
+        {
+            "episode": 17,
+            "rating": 6.9,
+            "id": "tt0504234"
+        },
+        {
+            "episode": 18,
+            "rating": 6.9,
+            "id": "tt0504209"
+        },
+        {
+            "episode": 19,
+            "rating": 6.8,
+            "id": "tt0504149"
+        },
+        {
+            "episode": 20,
+            "rating": 6.8,
+            "id": "tt0504185"
+        },
+        {
+            "episode": 21,
+            "rating": 7.0,
+            "id": "tt0504224"
+        },
+        {
+            "episode": 22,
+            "rating": 6.7,
+            "id": "tt0504213"
+        },
+        {
+            "episode": 23,
+            "rating": 7.6,
+            "id": "tt0504220"
+        }
+    ],
+    [
+        {
+            "episode": 1,
+            "rating": 6.7,
+            "id": "tt0504165"
+        },
+        {
+            "episode": 2,
+            "rating": 7.1,
+            "id": "tt0504230"
+        },
+        {
+            "episode": 3,
+            "rating": 6.9,
+            "id": "tt0504169"
+        },
+        {
+            "episode": 4,
+            "rating": 6.2,
+            "id": "tt0504191"
+        },
+        {
+            "episode": 5,
+            "rating": 6.6,
+            "id": "tt0504223"
+        },
+        {
+            "episode": 6,
+            "rating": 6.8,
+            "id": "tt0504219"
+        },
+        {
+            "episode": 7,
+            "rating": 6.6,
+            "id": "tt0504147"
+        },
+        {
+            "episode": 8,
+            "rating": 7.0,
+            "id": "tt0504167"
+        },
+        {
+            "episode": 9,
+            "rating": 6.6,
+            "id": "tt0504188"
+        },
+        {
+            "episode": 10,
+            "rating": 5.8,
+            "id": "tt0504207"
+        },
+        {
+            "episode": 11,
+            "rating": 7.0,
+            "id": "tt0504221"
+        },
+        {
+            "episode": 12,
+            "rating": 6.5,
+            "id": "tt0504210"
+        },
+        {
+            "episode": 13,
+            "rating": 7.2,
+            "id": "tt0504242"
+        }
+    ]
+]
