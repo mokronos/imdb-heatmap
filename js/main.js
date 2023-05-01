@@ -85,7 +85,7 @@ function colorValue(rating) {
         rating -= cutoff;
         backgroundcolor = `hsl(${rating/(10-cutoff)*120}, 100%, 50%)`;
     } else {
-        backgroundcolor = `hsl(0, 100%, ${rating/cutoff*35+15}%)`;
+        backgroundcolor = `hsl(0, 100%, ${rating/cutoff*50}%)`;
         color = "white";
     }
     return {backgroundcolor, color};
@@ -136,8 +136,9 @@ function findTitleId(titleIds, title) {
 
 
 async function createTable(titleIds) {
-    let title = search.value.toLowerCase();
-    let titleId = findTitleId(titleIds, title);
+    let title = search.value;
+    let titleLower = title.toLowerCase();
+    let titleId = findTitleId(titleIds, titleLower);
 
     if (titleId === 0) {
         console.log("Title not found!");
@@ -160,7 +161,8 @@ async function createTable(titleIds) {
     addGuide(seasonNumber - 1, maxEpisodes);
     loadStatus.innerHTML = search.value;
     loadStatus.style.color = "white";
-    document.title = `Series Heatmap - ${search.value}`;
+    document.title = `Series Heatmap - ${title}`;
+    setUrl(title);
     search.value = "";
 
 }
@@ -211,8 +213,33 @@ async function init() {
     });
     loadStatus.innerHTML = "Ready!";
     loadStatus.style.color = "green";
+    checkUrl();
     search.focus();
     console.log("enabled search");
+}
+
+
+function checkUrl() {
+    let title = getUrl();
+    if (title) {
+        search.value = title;
+        search.dispatchEvent(new Event("change"));
+    }
+}
+
+
+function setUrl(title) {
+    let url = new URL(window.location);
+    url.searchParams.set("title", title);
+    newUrl = window.location.pathname + "?" + url.searchParams.toString();
+    history.pushState({}, "", newUrl);
+}
+
+
+function getUrl() {
+    let url = new URL(window.location);
+    let title = url.searchParams.get("title");
+    return title;
 }
 
 
