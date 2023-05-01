@@ -56,7 +56,7 @@ function addTableRow(episodeRatings, seasonNumber) {
         let episodeNumber = episodeData.episode;
         let episodeId = episodeData.id;
         let episodeUrl = `${IMDB_URL}${episodeId}/`;
-        
+
         let episodeRatingCell = document.createElement("td");
         let episodeLink = document.createElement("a");
         episodeLink.href = episodeUrl;
@@ -66,9 +66,9 @@ function addTableRow(episodeRatings, seasonNumber) {
         episodeLink.addEventListener("mouseover", cellHover);
         episodeRatingCell.appendChild(episodeLink);
         episodeRatingCell.className = `s${seasonNumber}ep${episodeNumber} tableCell`;
-        let colors = colorValue(episodeRating);
-        episodeRatingCell.style.backgroundColor = colors.backgroundcolor;
-        episodeLink.style.color = colors.color;
+        let [backgroundColor, color] = colorValue(episodeRating);
+        episodeRatingCell.style.backgroundColor = backgroundColor;
+        episodeLink.style.color = color;
 
         seasonRow.appendChild(episodeRatingCell);
         episodeCount++;
@@ -78,17 +78,17 @@ function addTableRow(episodeRatings, seasonNumber) {
 
 
 function colorValue(rating) {
-    let backgroundcolor;
+    let backgroundColor;
     let color
     const cutoff = 6;
     if (rating > cutoff) {
         rating -= cutoff;
-        backgroundcolor = `hsl(${rating/(10-cutoff)*120}, 100%, 50%)`;
+        backgroundColor = `hsl(${rating/(10-cutoff)*120}, 100%, 50%)`;
     } else {
-        backgroundcolor = `hsl(0, 100%, ${rating/cutoff*50}%)`;
+        backgroundColor = `hsl(0, 100%, ${rating/cutoff*50}%)`;
         color = "white";
     }
-    return {backgroundcolor, color};
+    return [backgroundColor, color];
 }
 
 
@@ -125,29 +125,33 @@ function cellUnhover(event) {
     episodeClass.style.color = "black";
 }
 
-function findTitleId(titleIds, title) {
+function findTitleId(titleIds, titleLower) {
+    let id;
+    let title;
     for (let i = 0; i < titleIds.length; i++) {
-        if (titleIds[i].title.toLowerCase() === title) {
-            return titleIds[i].id;
+        if (titleIds[i].title.toLowerCase() === titleLower) {
+            id = titleIds[i].id;
+            title = titleIds[i].title;
+            return [id, title];
         };
     };
-    return 0;
+    return [0,0];
 }
 
 
 async function createTable(titleIds) {
-    let title = search.value;
-    let titleLower = title.toLowerCase();
-    let titleId = findTitleId(titleIds, titleLower);
+    let searchValue = search.value;
+    let searchLower = searchValue.toLowerCase();
+    let [id, title] = findTitleId(titleIds, searchLower);
 
-    if (titleId === 0) {
+    if (id === 0) {
         console.log("Title not found!");
         loadStatus.innerHTML = "Title not found";
         loadStatus.style.color = "red";
         return;
     }
 
-    const promise = await fetch(SERIES_URL + titleId + ".json");
+    const promise = await fetch(SERIES_URL + id + ".json");
     const allRatings = await promise.json();
     seasonNumber = 1;
     let maxEpisodes = 0;
@@ -159,13 +163,13 @@ async function createTable(titleIds) {
         seasonNumber++;
     });
     addGuide(seasonNumber - 1, maxEpisodes);
-    loadStatus.innerHTML = search.value;
+    loadStatus.innerHTML = title;
     loadStatus.style.color = "white";
     document.title = `Series Heatmap - ${title}`;
     setUrl(title);
     search.value = "";
-
 }
+
 
 function addGuide(maxSeasons, maxEpisodes) {
     let guideRow = document.createElement("tr");
@@ -191,7 +195,7 @@ function addGuide(maxSeasons, maxEpisodes) {
         let seasonClass = document.querySelector(`.season${i+1}`);
         seasonClass.insertBefore(guideColumnCell, seasonClass.firstChild);
     }
-        
+
 }
 
 
@@ -213,9 +217,9 @@ async function init() {
     });
     loadStatus.innerHTML = "Ready!";
     loadStatus.style.color = "green";
+    console.log("enabled search");
     checkUrl();
     search.focus();
-    console.log("enabled search");
 }
 
 
