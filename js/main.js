@@ -1,6 +1,7 @@
 const SERIES_URL = "./data/";
 const TITLE_ID_URL = "./data/titleId.json";
 const NO_CACHE_SUFFIX = getSuffix();
+const IMDB_URL = "https://www.imdb.com/title/";
 
 const targetTable = document.querySelector(".ratingsTable");
 const search = document.querySelector(".search");
@@ -12,9 +13,9 @@ function getSuffix(){
     const now = new Date();
     const hour = now.getUTCHours();
     let day = now.getUTCDate()
-    // delay new json fetch by 6 hours after midnight UTC
-    // gives github actions 6 hours to update data
-    if (hour > 6) {
+    // delay new json fetch by 8 hours after midnight UTC
+    // gives github actions 8 hours to update data
+    if (hour > 8) {
         day--;
     };
     const utc_time = `${now.getUTCFullYear()}${now.getUTCMonth()}${day}`;
@@ -48,13 +49,23 @@ function addTableRow(episodeRatings, seasonNumber) {
     let seasonRow = document.createElement("tr");
     seasonRow.className = `season${seasonNumber}`;
     targetTable.appendChild(seasonRow);
-    episodeNum = 0;
+    episodeCount = 0;
     episodeRatings.forEach(episodeData => {
-        let episodeRatingCell = document.createElement("td");
+
         let episodeRating = episodeData.rating;
         let episodeNumber = episodeData.episode;
-        episodeRatingCell.className = `s${seasonNumber}ep${episodeNumber}`;
-        episodeRatingCell.innerHTML = episodeRating;
+        let episodeId = episodeData.id;
+        let episodeUrl = `${IMDB_URL}${episodeId}/`;
+        
+        let episodeRatingCell = document.createElement("td");
+        let episodeLink = document.createElement("a");
+        episodeLink.href = episodeUrl;
+        episodeLink.target = "_blank";
+        episodeLink.innerHTML = episodeRating;
+        episodeLink.className = `s${seasonNumber}ep${episodeNumber} episodeLink`;
+        episodeLink.addEventListener("mouseover", cellHover);
+        episodeRatingCell.appendChild(episodeLink);
+        episodeRatingCell.className = `s${seasonNumber}ep${episodeNumber} tableCell`;
         episodeRatingCell.style.backgroundColor =
             `rgb(
                 ${Math.min(Math.abs(episodeRating-10) / 10 * 2, 1) * 255},
@@ -62,11 +73,43 @@ function addTableRow(episodeRatings, seasonNumber) {
                 0)`;
 
         seasonRow.appendChild(episodeRatingCell);
-        episodeNum++;
+        episodeCount++;
     });
-    return episodeNum;
+    return episodeCount;
 }
 
+function cellHover(event) {
+    // highlight season and episode from guide on hover
+    let cell = event.target;
+    cell.style.fontWeight = "bold";
+    let classNameSplit = cell.className.split(" ")[0];
+    let season = classNameSplit.split("s")[1];
+    season = season.split("ep")[0];
+    let episode = classNameSplit.split("ep")[1];
+    let seasonClass = document.querySelector(`.s${season}`);
+    let episodeClass = document.querySelector(`.ep${episode}`);
+    seasonClass.style.fontWeight = "bold";
+    seasonClass.style.color = "white";
+    episodeClass.style.fontWeight = "bold";
+    episodeClass.style.color = "white";
+    cell.addEventListener("mouseout", cellUnhover);
+}
+
+function cellUnhover(event) {
+    // remove highlight from season and episode on mouseout
+    let cell = event.target;
+    cell.style.fontWeight = "normal";
+    let classNameSplit = cell.className.split(" ")[0];
+    let season = classNameSplit.split("s")[1];
+    season = season.split("ep")[0];
+    let episode = classNameSplit.split("ep")[1];
+    let seasonClass = document.querySelector(`.s${season}`);
+    let episodeClass = document.querySelector(`.ep${episode}`);
+    seasonClass.style.fontWeight = "normal";
+    seasonClass.style.color = "black";
+    episodeClass.style.fontWeight = "normal";
+    episodeClass.style.color = "black";
+}
 
 function findTitleId(titleIds, title) {
     for (let i = 0; i < titleIds.length; i++) {
@@ -101,6 +144,11 @@ async function createTable(titleIds) {
         seasonNumber++;
     });
     addGuide(seasonNumber - 1, maxEpisodes);
+    loadStatus.innerHTML = search.value;
+    loadStatus.style.color = "white";
+    document.title = `Series Heatmap - ${search.value}`;
+    search.value = "";
+
 }
 
 function addGuide(maxSeasons, maxEpisodes) {
@@ -112,7 +160,7 @@ function addGuide(maxSeasons, maxEpisodes) {
 
     for (let i = 0; i < maxEpisodes; i++) {
         let guideRowCell = document.createElement("td");
-        guideRowCell.className = "guideRowCell";
+        guideRowCell.className = `guideRowCell tableCell ep${i+1}`;
         guideRowCell.innerHTML = i + 1;
         guideRow.appendChild(guideRowCell);
     }
@@ -122,7 +170,7 @@ function addGuide(maxSeasons, maxEpisodes) {
 
     for (let i = 0; i < maxSeasons; i++) {
         let guideColumnCell = document.createElement("td");
-        guideColumnCell.className = "guideColumnCell";
+        guideColumnCell.className = `guideColumnCell tableCell s${i+1}`;
         guideColumnCell.innerHTML = i + 1;
         let seasonClass = document.querySelector(`.season${i+1}`);
         seasonClass.insertBefore(guideColumnCell, seasonClass.firstChild);
