@@ -66,17 +66,31 @@ function addTableRow(episodeRatings, seasonNumber) {
         episodeLink.addEventListener("mouseover", cellHover);
         episodeRatingCell.appendChild(episodeLink);
         episodeRatingCell.className = `s${seasonNumber}ep${episodeNumber} tableCell`;
-        episodeRatingCell.style.backgroundColor =
-            `rgb(
-                ${Math.min(Math.abs(episodeRating-10) / 10 * 2, 1) * 255},
-                ${Math.min(episodeRating / 10 * 2, 1) * 255},
-                0)`;
+        let colors = colorValue(episodeRating);
+        episodeRatingCell.style.backgroundColor = colors.backgroundcolor;
+        episodeLink.style.color = colors.color;
 
         seasonRow.appendChild(episodeRatingCell);
         episodeCount++;
     });
     return episodeCount;
 }
+
+
+function colorValue(rating) {
+    let backgroundcolor;
+    let color
+    const cutoff = 6;
+    if (rating > cutoff) {
+        rating -= cutoff;
+        backgroundcolor = `hsl(${rating/(10-cutoff)*120}, 100%, 50%)`;
+    } else {
+        backgroundcolor = `hsl(0, 100%, ${rating/cutoff*35+15}%)`;
+        color = "white";
+    }
+    return {backgroundcolor, color};
+}
+
 
 function cellHover(event) {
     // highlight season and episode from guide on hover
@@ -135,7 +149,7 @@ async function createTable(titleIds) {
     const promise = await fetch(SERIES_URL + titleId + ".json");
     const allRatings = await promise.json();
     seasonNumber = 1;
-    maxEpisodes = 0;
+    let maxEpisodes = 0;
     allRatings.forEach(seasonRatings => {
         let numEpisodes = addTableRow(seasonRatings, seasonNumber);
         if (numEpisodes > maxEpisodes) {
@@ -197,6 +211,7 @@ async function init() {
     });
     loadStatus.innerHTML = "Ready!";
     loadStatus.style.color = "green";
+    search.focus();
     console.log("enabled search");
 }
 
