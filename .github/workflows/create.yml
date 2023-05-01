@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 2 * * *'
 jobs:
 
   create:
@@ -12,7 +12,6 @@ jobs:
           || github.event_name == 'schedule'}}
     name: create dataset
     runs-on: ubuntu-latest
-    # if: ${{false}}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
