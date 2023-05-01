@@ -155,7 +155,7 @@ function addGuide(maxSeasons, maxEpisodes) {
     let guideRow = document.createElement("tr");
     let guideRowCell = document.createElement("td");
     guideRowCell.className = "guideOrigin";
-    // guideRowCell.innerHTML = "";
+    guideRowCell.innerHTML = "S\\E";
     guideRow.appendChild(guideRowCell);
 
     for (let i = 0; i < maxEpisodes; i++) {
@@ -177,6 +177,7 @@ function addGuide(maxSeasons, maxEpisodes) {
     }
         
 }
+
 
 function cleanTable() {
     while (targetTable.firstChild) {

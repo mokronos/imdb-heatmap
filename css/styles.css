@@ -28,3 +28,9 @@ td, th {
     height: 40px;
     text-align: center;
 }
+
+.guideOrigin {
+    background-color: DimGray;
+    font-weight: 600;
+    text-align: center;
+}
