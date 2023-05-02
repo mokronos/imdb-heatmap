@@ -7,6 +7,8 @@ const targetTable = document.querySelector(".ratingsTable");
 const search = document.querySelector(".search");
 const optionList = document.getElementById("search");
 const loadStatus = document.querySelector(".loadStatus");
+const fontWeightNormal = "700";
+const fontWeightBig = "900";
 
 
 function getSuffix(){
@@ -95,16 +97,16 @@ function colorValue(rating) {
 function cellHover(event) {
     // highlight season and episode from guide on hover
     let cell = event.target;
-    cell.style.fontWeight = "bold";
+    cell.style.fontWeight = fontWeightBig;
     let classNameSplit = cell.className.split(" ")[0];
     let season = classNameSplit.split("s")[1];
     season = season.split("ep")[0];
     let episode = classNameSplit.split("ep")[1];
     let seasonClass = document.querySelector(`.s${season}`);
     let episodeClass = document.querySelector(`.ep${episode}`);
-    seasonClass.style.fontWeight = "bold";
+    seasonClass.style.fontWeight = fontWeightBig;
     seasonClass.style.color = "white";
-    episodeClass.style.fontWeight = "bold";
+    episodeClass.style.fontWeight = fontWeightBig;
     episodeClass.style.color = "white";
     cell.addEventListener("mouseout", cellUnhover);
 }
@@ -112,16 +114,16 @@ function cellHover(event) {
 function cellUnhover(event) {
     // remove highlight from season and episode on mouseout
     let cell = event.target;
-    cell.style.fontWeight = "normal";
+    cell.style.fontWeight = fontWeightNormal;
     let classNameSplit = cell.className.split(" ")[0];
     let season = classNameSplit.split("s")[1];
     season = season.split("ep")[0];
     let episode = classNameSplit.split("ep")[1];
     let seasonClass = document.querySelector(`.s${season}`);
     let episodeClass = document.querySelector(`.ep${episode}`);
-    seasonClass.style.fontWeight = "normal";
+    seasonClass.style.fontWeight = fontWeightNormal;
     seasonClass.style.color = "black";
-    episodeClass.style.fontWeight = "normal";
+    episodeClass.style.fontWeight = fontWeightNormal;
     episodeClass.style.color = "black";
 }
 

@@ -5,7 +5,8 @@
 body {
     background-color: #333;
     color: #fff;
-    font-family: 'Comic Sans Ms';
+    font-family: 'Grandstander';
+    font-weight: 700;
 }
 td, th {
     color: #000;
@@ -34,7 +35,6 @@ td, th {
 
 .guideOrigin {
     background-color: DimGray;
-    font-weight: 600;
     text-align: center;
 }
 
