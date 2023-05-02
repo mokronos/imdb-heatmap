@@ -168,7 +168,9 @@ async function createTable(titleIds) {
     loadStatus.innerHTML = title;
     loadStatus.style.color = "white";
     document.title = `Series Heatmap - ${title}`;
-    setUrl(title);
+    if (getUrl() !== title) {
+        setUrl(title);
+    }
     search.value = "";
 }
 
@@ -217,6 +219,7 @@ async function init() {
         cleanTable();
         createTable(titleIds)
     });
+    window.addEventListener("popstate", checkUrl);
     loadStatus.innerHTML = "Ready!";
     loadStatus.style.color = "green";
     console.log("enabled search");
