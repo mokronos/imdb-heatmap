@@ -5,6 +5,7 @@
 body {
     background-color: #333;
     color: #fff;
+    font-family: 'Comic Sans Ms';
 }
 td, th {
     color: #000;
@@ -26,6 +27,8 @@ td, th {
 .tableCell {
     width: 40px;
     height: 40px;
+    min-width: 40px;
+    min-height: 40px;
     text-align: center;
 }
 
@@ -35,7 +38,11 @@ td, th {
     text-align: center;
 }
 
-a {
+.tableCell a {
     color: #000;
+}
+
+.footer a {
+    color: #fff;
 }
 
