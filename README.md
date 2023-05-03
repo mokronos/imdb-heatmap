@@ -1,5 +1,5 @@
 # showheatmap
-Website that shows heatmaps of ratings of tv show episodes.
+[Website](https://mokronos.github.io/showheatmap) that shows heatmaps of ratings of tv show episodes.
 
 # How it works
 The python script downloads the data from imdb and saves the top 1000 shows(for now) as one {title, id} array.
@@ -15,3 +15,6 @@ Dataset generation takes way too long (1h48min) for 1000 shows. Currently using 
 
 Series "Married... with Children" doesn't get generated.
 Probably because of the first unrated pilot episode.
+
+Need to manage duplicates in the dataset. Currently there are 2 "The Office" series, one can't be accessed.
+Could add year and/or force selection.
