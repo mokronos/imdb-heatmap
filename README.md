@@ -2,7 +2,7 @@
 [Website](https://mokronos.github.io/showheatmap) that shows heatmaps of ratings of tv show episodes.
 
 # Idea
-The idea for the site come from this [Website](https://vallandingham.me/seriesheat/#/). My main issues with the site were speed (its annoing so search) and that its not up to date.
+The idea for the site come from this [Website](https://vallandingham.me/seriesheat/#/). My main issues with the site were speed (its annoying to search) and that its not up to date.
 
 # How it works
 The python script downloads the data from imdb and saves the top 2500 shows(for now) as one {title, id} json file.
