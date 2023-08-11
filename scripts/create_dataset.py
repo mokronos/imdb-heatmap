@@ -3,12 +3,15 @@ import json
 import pandas as pd
 
 VOTES_URL = "https://datasets.imdbws.com/title.ratings.tsv.gz"
+VOTES_URL = "title.ratings.tsv.gz"
 EPISODES_URL = "https://datasets.imdbws.com/title.episode.tsv.gz"
+EPISODES_URL = "title.episode.tsv.gz"
 NAMES_URL = "https://datasets.imdbws.com/title.basics.tsv.gz"
+NAMES_URL = "title.basics.tsv.gz"
 
 DATA_DIR = "data/"
 
-NUM_SHOWS = 2500
+NUM_SHOWS = 25
 
 
 def gen_idtitle(parent_votes, names):
@@ -73,9 +76,9 @@ def gen_season_ratings(parent_id, ratings, episodes):
 
 def main():
 
-    names = requests.get(NAMES_URL)
-    episodes = requests.get(EPISODES_URL)
-    votes = requests.get(VOTES_URL)
+    # names = requests.get(NAMES_URL)
+    # episodes = requests.get(EPISODES_URL)
+    # votes = requests.get(VOTES_URL)
 
     names = pd.read_csv(NAMES_URL,
                         header=0,
@@ -106,9 +109,8 @@ def main():
     # get ids of parent shows that are top 1000 in votes
     # get the votes for the shows overall
     parent_votes = votes[votes["tconst"].isin(parent_shows)]
-    parent_votes = parent_votes.sort_values(by=["numVotes"], ascending=False)
-    parent_votes = parent_votes[:NUM_SHOWS]
-    print("generated list of shows sorted by votes")
+    parent_votes = parent_votes.nlargest(NUM_SHOWS, "numVotes")
+    print("generated list of parent shows sorted by votes")
 
     episodes = episodes[episodes["episodeNumber"] != "\\N"]
     print("removed episodes with no episode/season number")
