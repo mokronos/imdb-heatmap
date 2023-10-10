@@ -7093,18 +7093,23 @@
     [
         {
             "episode": 1,
-            "rating": 8.8,
+            "rating": 8.6,
             "id": "tt29171067"
         },
         {
             "episode": 2,
-            "rating": 8.0,
+            "rating": 8.3,
             "id": "tt29171072"
         },
         {
             "episode": 3,
-            "rating": 7.4,
+            "rating": 7.6,
             "id": "tt29171076"
+        },
+        {
+            "episode": 4,
+            "rating": 7.4,
+            "id": "tt29171080"
         }
     ]
 ]
