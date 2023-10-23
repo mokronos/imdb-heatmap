@@ -4445,12 +4445,12 @@
         },
         {
             "episode": 26,
-            "rating": 7.8,
+            "rating": 7.7,
             "id": "tt29079600"
         },
         {
             "episode": 27,
-            "rating": 7.6,
+            "rating": 7.4,
             "id": "tt29079601"
         },
         {
@@ -4465,18 +4465,23 @@
         },
         {
             "episode": 30,
-            "rating": 8.2,
+            "rating": 8.3,
             "id": "tt29079605"
         },
         {
             "episode": 31,
-            "rating": 7.0,
+            "rating": 7.2,
             "id": "tt29420568"
         },
         {
             "episode": 32,
-            "rating": 7.9,
+            "rating": 8.0,
             "id": "tt29454836"
+        },
+        {
+            "episode": 33,
+            "rating": 7.9,
+            "id": "tt29454837"
         }
     ]
 ]
