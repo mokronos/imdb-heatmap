@@ -2537,13 +2537,23 @@
     [
         {
             "episode": 1,
-            "rating": 7.4,
+            "rating": 7.2,
             "id": "tt29288381"
         },
         {
             "episode": 2,
-            "rating": 7.4,
+            "rating": 7.2,
             "id": "tt29288391"
+        },
+        {
+            "episode": 3,
+            "rating": 8.0,
+            "id": "tt29537044"
+        },
+        {
+            "episode": 4,
+            "rating": 7.5,
+            "id": "tt29537067"
         }
     ]
 ]
