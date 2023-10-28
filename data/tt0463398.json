@@ -2369,23 +2369,28 @@
     [
         {
             "episode": 1,
-            "rating": 8.1,
+            "rating": 8.0,
             "id": "tt19407494"
         },
         {
             "episode": 2,
-            "rating": 7.4,
+            "rating": 7.3,
             "id": "tt29213238"
         },
         {
             "episode": 3,
-            "rating": 7.8,
+            "rating": 7.7,
             "id": "tt29213326"
         },
         {
             "episode": 4,
-            "rating": 8.3,
+            "rating": 8.2,
             "id": "tt29420084"
+        },
+        {
+            "episode": 5,
+            "rating": 7.9,
+            "id": "tt29420079"
         }
     ]
 ]
