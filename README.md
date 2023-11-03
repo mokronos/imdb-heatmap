@@ -1,5 +1,5 @@
-# showheatmap
-[Website](https://mokronos.github.io/showheatmap) that shows heatmaps of ratings of tv show episodes.
+# Imdb-Heatmap
+[Website](https://mokronos.github.io/imdb-heatmap) that shows heatmaps of ratings of tv show episodes.
 
 # Idea
 The idea for the site come from this [Website](https://vallandingham.me/seriesheat/#/). My main issues with the site were speed (its annoying to search) and that its not up to date.
