@@ -91,8 +91,18 @@
     [
         {
             "episode": 1,
-            "rating": 8.5,
+            "rating": 8.6,
             "id": "tt27525087"
+        },
+        {
+            "episode": 2,
+            "rating": 7.8,
+            "id": "tt29769222"
+        },
+        {
+            "episode": 3,
+            "rating": 8.2,
+            "id": "tt29769258"
         }
     ]
 ]
