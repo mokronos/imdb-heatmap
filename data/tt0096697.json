@@ -3815,12 +3815,12 @@
     [
         {
             "episode": 1,
-            "rating": 6.7,
+            "rating": 6.8,
             "id": "tt26457880"
         },
         {
             "episode": 2,
-            "rating": 6.9,
+            "rating": 7.0,
             "id": "tt29076700"
         },
         {
@@ -3837,6 +3837,11 @@
             "episode": 5,
             "rating": 6.8,
             "id": "tt29236803"
+        },
+        {
+            "episode": 6,
+            "rating": 4.7,
+            "id": "tt29593472"
         }
     ]
 ]
