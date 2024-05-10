@@ -1951,18 +1951,23 @@
         },
         {
             "episode": 24,
-            "rating": 6.8,
+            "rating": 6.5,
             "id": "tt30274402"
         },
         {
             "episode": 25,
-            "rating": 7.9,
+            "rating": 7.1,
             "id": "tt31536288"
         },
         {
             "episode": 26,
-            "rating": 8.1,
+            "rating": 7.2,
             "id": "tt32043477"
+        },
+        {
+            "episode": 27,
+            "rating": 6.2,
+            "id": "tt32064865"
         }
     ]
 ]

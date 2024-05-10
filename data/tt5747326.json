@@ -1801,20 +1801,25 @@
         },
         {
             "episode": 80,
-            "rating": 6.6,
+            "rating": 6.5,
             "id": "tt20860984"
         }
     ],
     [
         {
             "episode": 1,
-            "rating": 5.7,
+            "rating": 5.6,
             "id": "tt21944452"
         },
         {
             "episode": 2,
-            "rating": 6.0,
+            "rating": 5.8,
             "id": "tt22071974"
+        },
+        {
+            "episode": 5,
+            "rating": 6.6,
+            "id": "tt22459684"
         },
         {
             "episode": 7,
