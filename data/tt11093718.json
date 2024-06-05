@@ -710,7 +710,7 @@
         },
         {
             "episode": 13,
-            "rating": 8.4,
+            "rating": 8.5,
             "id": "tt30828958"
         },
         {
@@ -730,22 +730,22 @@
         },
         {
             "episode": 17,
-            "rating": 8.9,
+            "rating": 9.0,
             "id": "tt31182528"
         },
         {
             "episode": 18,
-            "rating": 8.4,
+            "rating": 8.5,
             "id": "tt31307413"
         },
         {
             "episode": 19,
-            "rating": 8.7,
+            "rating": 8.8,
             "id": "tt31417551"
         },
         {
             "episode": 20,
-            "rating": 8.7,
+            "rating": 8.8,
             "id": "tt31501665"
         },
         {
@@ -760,27 +760,27 @@
         },
         {
             "episode": 23,
-            "rating": 8.2,
+            "rating": 8.3,
             "id": "tt31843205"
         },
         {
             "episode": 24,
-            "rating": 8.2,
+            "rating": 8.4,
             "id": "tt31924044"
         },
         {
             "episode": 25,
-            "rating": 8.9,
+            "rating": 9.0,
             "id": "tt31989236"
         },
         {
             "episode": 26,
-            "rating": 8.3,
+            "rating": 8.4,
             "id": "tt32135245"
         },
         {
             "episode": 27,
-            "rating": 8.7,
+            "rating": 8.8,
             "id": "tt32200321"
         },
         {
@@ -790,18 +790,23 @@
         },
         {
             "episode": 29,
-            "rating": 9.1,
+            "rating": 9.2,
             "id": "tt32316981"
         },
         {
             "episode": 30,
-            "rating": 7.7,
+            "rating": 7.9,
             "id": "tt32370789"
         },
         {
             "episode": 31,
-            "rating": 8.8,
+            "rating": 8.9,
             "id": "tt32432427"
+        },
+        {
+            "episode": 32,
+            "rating": 8.0,
+            "id": "tt32484820"
         }
     ]
 ]
