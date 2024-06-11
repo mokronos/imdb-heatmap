@@ -2,7 +2,7 @@
     [
         {
             "episode": 1,
-            "rating": 6.9,
+            "rating": 7.0,
             "id": "tt0568765"
         },
         {
@@ -77,7 +77,7 @@
         },
         {
             "episode": 16,
-            "rating": 6.7,
+            "rating": 6.6,
             "id": "tt0941472"
         },
         {
@@ -3342,7 +3342,7 @@
         },
         {
             "episode": 1996,
-            "rating": 8.2,
+            "rating": 8.4,
             "id": "tt1018326"
         },
         {
@@ -5747,12 +5747,12 @@
         },
         {
             "episode": 6198,
-            "rating": 8.2,
+            "rating": 7.0,
             "id": "tt5417184"
         },
         {
             "episode": 6199,
-            "rating": 8.0,
+            "rating": 6.8,
             "id": "tt5417186"
         },
         {
@@ -5787,32 +5787,32 @@
         },
         {
             "episode": 6268,
-            "rating": 7.7,
+            "rating": 6.7,
             "id": "tt5417324"
         },
         {
             "episode": 6269,
-            "rating": 7.7,
+            "rating": 6.7,
             "id": "tt5417326"
         },
         {
             "episode": 6270,
-            "rating": 7.7,
+            "rating": 6.7,
             "id": "tt5417328"
         },
         {
             "episode": 6271,
-            "rating": 7.3,
+            "rating": 6.4,
             "id": "tt5417330"
         },
         {
             "episode": 6273,
-            "rating": 7.5,
+            "rating": 6.6,
             "id": "tt5417334"
         },
         {
             "episode": 6274,
-            "rating": 7.7,
+            "rating": 6.7,
             "id": "tt5417336"
         },
         {
@@ -5877,13 +5877,23 @@
         },
         {
             "episode": 6462,
-            "rating": 7.2,
+            "rating": 6.2,
             "id": "tt6441006"
         },
         {
             "episode": 6463,
             "rating": 6.5,
             "id": "tt6441010"
+        },
+        {
+            "episode": 6464,
+            "rating": 6.3,
+            "id": "tt6441012"
+        },
+        {
+            "episode": 6465,
+            "rating": 7.2,
+            "id": "tt6441016"
         },
         {
             "episode": 6472,
@@ -5912,7 +5922,7 @@
         },
         {
             "episode": 6559,
-            "rating": 7.4,
+            "rating": 6.3,
             "id": "tt6446668"
         },
         {
@@ -5927,12 +5937,12 @@
         },
         {
             "episode": 6568,
-            "rating": 7.4,
+            "rating": 6.3,
             "id": "tt6447048"
         },
         {
             "episode": 6569,
-            "rating": 7.2,
+            "rating": 6.2,
             "id": "tt6447050"
         },
         {
@@ -5962,7 +5972,7 @@
         },
         {
             "episode": 6583,
-            "rating": 7.2,
+            "rating": 6.2,
             "id": "tt7187596"
         },
         {
@@ -5987,7 +5997,7 @@
         },
         {
             "episode": 6589,
-            "rating": 7.2,
+            "rating": 6.2,
             "id": "tt7187622"
         },
         {
@@ -6002,7 +6012,7 @@
         },
         {
             "episode": 6592,
-            "rating": 7.2,
+            "rating": 6.2,
             "id": "tt7187608"
         },
         {
@@ -6012,17 +6022,17 @@
         },
         {
             "episode": 6595,
-            "rating": 7.2,
+            "rating": 6.3,
             "id": "tt7187616"
         },
         {
             "episode": 6596,
-            "rating": 7.2,
+            "rating": 6.2,
             "id": "tt7188996"
         },
         {
             "episode": 6597,
-            "rating": 7.4,
+            "rating": 6.3,
             "id": "tt7188992"
         },
         {
@@ -6312,12 +6322,12 @@
         },
         {
             "episode": 6882,
-            "rating": 7.4,
+            "rating": 7.6,
             "id": "tt31814986"
         },
         {
             "episode": 6883,
-            "rating": 8.1,
+            "rating": 8.2,
             "id": "tt32064272"
         }
     ]
