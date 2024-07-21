@@ -438,12 +438,12 @@
         },
         {
             "episode": 3,
-            "rating": 8.2,
+            "rating": 8.3,
             "id": "tt32198597"
         },
         {
             "episode": 4,
-            "rating": 7.0,
+            "rating": 7.1,
             "id": "tt32198604"
         },
         {
@@ -453,7 +453,7 @@
         },
         {
             "episode": 6,
-            "rating": 7.5,
+            "rating": 7.4,
             "id": "tt32452470"
         },
         {
@@ -463,7 +463,7 @@
         },
         {
             "episode": 8,
-            "rating": 6.4,
+            "rating": 6.5,
             "id": "tt32452473"
         },
         {
@@ -480,6 +480,11 @@
             "episode": 11,
             "rating": 8.5,
             "id": "tt32452479"
+        },
+        {
+            "episode": 12,
+            "rating": 3.6,
+            "id": "tt32909146"
         }
     ]
 ]
