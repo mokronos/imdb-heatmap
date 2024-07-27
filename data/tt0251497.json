@@ -4532,7 +4532,7 @@
     [
         {
             "episode": 1,
-            "rating": 7.3,
+            "rating": 7.2,
             "id": "tt32314967"
         },
         {
@@ -4542,8 +4542,18 @@
         },
         {
             "episode": 3,
-            "rating": 8.3,
+            "rating": 8.5,
             "id": "tt32820958"
+        },
+        {
+            "episode": 4,
+            "rating": 8.5,
+            "id": "tt32820959"
+        },
+        {
+            "episode": 5,
+            "rating": 8.1,
+            "id": "tt32820961"
         }
     ]
 ]

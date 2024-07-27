@@ -2223,12 +2223,12 @@
         },
         {
             "episode": 3,
-            "rating": 6.7,
+            "rating": 6.8,
             "id": "tt32606677"
         },
         {
             "episode": 4,
-            "rating": 6.2,
+            "rating": 6.3,
             "id": "tt32613072"
         },
         {
@@ -2243,8 +2243,13 @@
         },
         {
             "episode": 7,
-            "rating": 6.3,
+            "rating": 6.2,
             "id": "tt32960099"
+        },
+        {
+            "episode": 8,
+            "rating": 6.5,
+            "id": "tt32960101"
         }
     ]
 ]
