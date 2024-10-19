@@ -2,18 +2,23 @@
     [
         {
             "episode": 1,
-            "rating": 1.7,
+            "rating": 2.6,
             "id": "tt1740302"
         },
         {
             "episode": 2,
-            "rating": 1.8,
+            "rating": 2.9,
             "id": "tt3682858"
         },
         {
             "episode": 5,
-            "rating": 1.8,
+            "rating": 1.7,
             "id": "tt0740278"
+        },
+        {
+            "episode": 7,
+            "rating": 1.8,
+            "id": "tt3682862"
         }
     ]
 ]
