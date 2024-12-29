@@ -45,5 +45,42 @@
             "rating": 7.5,
             "id": "tt15269884"
         }
+    ],
+    [
+        {
+            "episode": 1,
+            "rating": 8.0,
+            "id": "tt15939754"
+        },
+        {
+            "episode": 2,
+            "rating": 7.5,
+            "id": "tt34382288"
+        },
+        {
+            "episode": 3,
+            "rating": 7.9,
+            "id": "tt35149224"
+        },
+        {
+            "episode": 4,
+            "rating": 7.7,
+            "id": "tt35154728"
+        },
+        {
+            "episode": 5,
+            "rating": 7.2,
+            "id": "tt35154733"
+        },
+        {
+            "episode": 6,
+            "rating": 7.6,
+            "id": "tt35149232"
+        },
+        {
+            "episode": 7,
+            "rating": 6.9,
+            "id": "tt35153959"
+        }
     ]
 ]
