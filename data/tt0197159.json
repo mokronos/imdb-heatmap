@@ -203,23 +203,23 @@
     [
         {
             "episode": 1,
+            "rating": 8.3,
+            "id": "tt0808670"
+        },
+        {
+            "episode": 2,
             "rating": 8.4,
             "id": "tt0603598"
         },
         {
-            "episode": 2,
+            "episode": 3,
             "rating": 9.1,
             "id": "tt0808663"
         },
         {
-            "episode": 3,
+            "episode": 4,
             "rating": 8.1,
             "id": "tt0808694"
-        },
-        {
-            "episode": 4,
-            "rating": 8.3,
-            "id": "tt0808670"
         },
         {
             "episode": 5,
