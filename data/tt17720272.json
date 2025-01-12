@@ -50,5 +50,47 @@
             "rating": 6.4,
             "id": "tt21048318"
         }
+    ],
+    [
+        {
+            "episode": 1,
+            "rating": 6.9,
+            "id": "tt31241619"
+        },
+        {
+            "episode": 2,
+            "rating": 7.1,
+            "id": "tt31241626"
+        },
+        {
+            "episode": 3,
+            "rating": 6.9,
+            "id": "tt31241624"
+        },
+        {
+            "episode": 4,
+            "rating": 7.2,
+            "id": "tt31241621"
+        },
+        {
+            "episode": 5,
+            "rating": 7.1,
+            "id": "tt31241623"
+        },
+        {
+            "episode": 6,
+            "rating": 7.1,
+            "id": "tt31241620"
+        },
+        {
+            "episode": 7,
+            "rating": 7.5,
+            "id": "tt31241622"
+        },
+        {
+            "episode": 8,
+            "rating": 7.5,
+            "id": "tt31241625"
+        }
     ]
 ]
