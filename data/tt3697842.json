@@ -8025,7 +8025,7 @@
         },
         {
             "episode": 59,
-            "rating": 5.2,
+            "rating": 5.5,
             "id": "tt35294908"
         },
         {
@@ -8035,7 +8035,7 @@
         },
         {
             "episode": 61,
-            "rating": 4.8,
+            "rating": 5.1,
             "id": "tt35294910"
         },
         {
@@ -8045,13 +8045,23 @@
         },
         {
             "episode": 63,
-            "rating": 5.7,
+            "rating": 6.0,
             "id": "tt35359361"
         },
         {
+            "episode": 64,
+            "rating": 7.7,
+            "id": "tt35359362"
+        },
+        {
             "episode": 65,
-            "rating": 6.8,
+            "rating": 6.4,
             "id": "tt35359364"
+        },
+        {
+            "episode": 66,
+            "rating": 8.2,
+            "id": "tt35460846"
         }
     ]
 ]
