@@ -10439,18 +10439,43 @@
         },
         {
             "episode": 48,
-            "rating": 7.2,
+            "rating": 7.0,
             "id": "tt35011310"
         },
         {
             "episode": 51,
-            "rating": 6.8,
+            "rating": 5.9,
             "id": "tt35294921"
         },
         {
             "episode": 53,
-            "rating": 5.9,
+            "rating": 5.4,
             "id": "tt35294923"
+        },
+        {
+            "episode": 57,
+            "rating": 5.6,
+            "id": "tt35359394"
+        },
+        {
+            "episode": 58,
+            "rating": 6.0,
+            "id": "tt35359395"
+        },
+        {
+            "episode": 62,
+            "rating": 6.5,
+            "id": "tt35414541"
+        },
+        {
+            "episode": 63,
+            "rating": 5.2,
+            "id": "tt35414542"
+        },
+        {
+            "episode": 64,
+            "rating": 5.6,
+            "id": "tt35414544"
         }
     ]
 ]
