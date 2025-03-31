@@ -2140,7 +2140,7 @@
     [
         {
             "episode": 1,
-            "rating": 7.3,
+            "rating": 7.2,
             "id": "tt27244877"
         },
         {
@@ -2247,13 +2247,18 @@
         },
         {
             "episode": 12,
-            "rating": 8.4,
+            "rating": 8.1,
             "id": "tt33528537"
         },
         {
             "episode": 17,
-            "rating": 9.0,
+            "rating": 9.1,
             "id": "tt33528550"
+        },
+        {
+            "episode": 18,
+            "rating": 8.0,
+            "id": "tt33528553"
         }
     ]
 ]
