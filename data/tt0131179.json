@@ -239,23 +239,23 @@
     [
         {
             "episode": 1,
-            "rating": 7.5,
-            "id": "tt0927902"
-        },
-        {
-            "episode": 2,
-            "rating": 7.8,
-            "id": "tt0930289"
-        },
-        {
-            "episode": 3,
             "rating": 7.0,
             "id": "tt0931023"
         },
         {
-            "episode": 4,
+            "episode": 2,
             "rating": 8.2,
             "id": "tt0931024"
+        },
+        {
+            "episode": 3,
+            "rating": 7.5,
+            "id": "tt0927902"
+        },
+        {
+            "episode": 4,
+            "rating": 7.8,
+            "id": "tt0930289"
         },
         {
             "episode": 5,
