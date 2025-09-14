@@ -501,20 +501,18 @@
         },
         {
             "episode": 18,
+            "rating": 8.9,
+            "id": "tt11137670"
+        },
+        {
+            "episode": 19,
             "rating": 9.2,
             "id": "tt11137674"
         },
         {
-            "episode": 19,
+            "episode": 20,
             "rating": 9.4,
             "id": "tt11137678"
-        }
-    ],
-    [
-        {
-            "episode": 1,
-            "rating": 8.9,
-            "id": "tt11137670"
         }
     ]
 ]
