@@ -1402,13 +1402,18 @@
         },
         {
             "episode": 11,
-            "rating": 8.1,
+            "rating": 8.0,
             "id": "tt38132659"
         },
         {
             "episode": 12,
-            "rating": 8.2,
+            "rating": 8.0,
             "id": "tt38132665"
+        },
+        {
+            "episode": 13,
+            "rating": 8.2,
+            "id": "tt38497667"
         }
     ]
 ]
