@@ -2231,12 +2231,12 @@
     [
         {
             "episode": 1,
-            "rating": 5.8,
+            "rating": 5.7,
             "id": "tt36482657"
         },
         {
             "episode": 2,
-            "rating": 6.6,
+            "rating": 6.7,
             "id": "tt38431347"
         },
         {
@@ -2251,13 +2251,18 @@
         },
         {
             "episode": 5,
-            "rating": 7.6,
+            "rating": 7.7,
             "id": "tt38431351"
         },
         {
             "episode": 6,
             "rating": 7.4,
             "id": "tt38431352"
+        },
+        {
+            "episode": 7,
+            "rating": 7.6,
+            "id": "tt38431354"
         }
     ]
 ]
