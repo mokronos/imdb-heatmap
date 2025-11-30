@@ -207,22 +207,22 @@
         },
         {
             "episode": 42,
-            "rating": 8.1,
+            "rating": 8.2,
             "id": "tt10030446"
         },
         {
             "episode": 43,
-            "rating": 9.0,
+            "rating": 9.1,
             "id": "tt10030450"
         },
         {
             "episode": 44,
-            "rating": 9.3,
+            "rating": 9.4,
             "id": "tt10030452"
         },
         {
             "episode": 45,
-            "rating": 8.7,
+            "rating": 8.9,
             "id": "tt10030454"
         },
         {
@@ -1594,6 +1594,11 @@
             "episode": 319,
             "rating": 7.7,
             "id": "tt10077178"
+        },
+        {
+            "episode": 320,
+            "rating": 9.4,
+            "id": "tt10077180"
         },
         {
             "episode": 326,
