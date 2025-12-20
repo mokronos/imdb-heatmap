@@ -400,13 +400,23 @@
         },
         {
             "episode": 7,
-            "rating": 7.2,
+            "rating": 7.1,
             "id": "tt37894771"
         },
         {
             "episode": 8,
             "rating": 7.4,
             "id": "tt38689241"
+        },
+        {
+            "episode": 9,
+            "rating": 7.8,
+            "id": "tt38689242"
+        },
+        {
+            "episode": 10,
+            "rating": 7.9,
+            "id": "tt38689243"
         }
     ]
 ]
