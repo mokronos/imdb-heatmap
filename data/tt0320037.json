@@ -2,38 +2,48 @@
     [
         {
             "episode": 1,
-            "rating": 4.0,
+            "rating": 4.3,
             "id": "tt0615572"
         },
         {
             "episode": 2,
-            "rating": 3.3,
+            "rating": 3.6,
             "id": "tt0615573"
         },
         {
             "episode": 3,
-            "rating": 3.6,
+            "rating": 4.1,
             "id": "tt0615574"
         },
         {
             "episode": 4,
-            "rating": 3.8,
+            "rating": 4.4,
             "id": "tt0615575"
         },
         {
             "episode": 5,
-            "rating": 2.8,
+            "rating": 4.0,
             "id": "tt0615576"
         },
         {
             "episode": 6,
-            "rating": 2.5,
+            "rating": 3.6,
             "id": "tt0615577"
         },
         {
             "episode": 7,
-            "rating": 1.8,
+            "rating": 3.2,
             "id": "tt0615578"
+        },
+        {
+            "episode": 8,
+            "rating": 2.8,
+            "id": "tt0615579"
+        },
+        {
+            "episode": 9,
+            "rating": 2.8,
+            "id": "tt0615580"
         },
         {
             "episode": 11,
