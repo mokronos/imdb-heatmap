@@ -1,1 +1,39 @@
-[]
+[
+    [
+        {
+            "episode": 1,
+            "rating": 8.1,
+            "id": "tt26351529"
+        },
+        {
+            "episode": 2,
+            "rating": 7.8,
+            "id": "tt26749694"
+        },
+        {
+            "episode": 3,
+            "rating": 7.5,
+            "id": "tt26749697"
+        },
+        {
+            "episode": 4,
+            "rating": 7.7,
+            "id": "tt26749698"
+        },
+        {
+            "episode": 5,
+            "rating": 7.8,
+            "id": "tt27673041"
+        },
+        {
+            "episode": 6,
+            "rating": 8.1,
+            "id": "tt28250452"
+        },
+        {
+            "episode": 7,
+            "rating": 8.3,
+            "id": "tt28250551"
+        }
+    ]
+]
