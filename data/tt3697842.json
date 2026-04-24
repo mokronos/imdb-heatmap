@@ -8847,7 +8847,7 @@
         },
         {
             "episode": 69,
-            "rating": 6.7,
+            "rating": 6.9,
             "id": "tt39404589"
         },
         {
@@ -8877,7 +8877,7 @@
         },
         {
             "episode": 75,
-            "rating": 7.0,
+            "rating": 7.2,
             "id": "tt39701517"
         },
         {
@@ -8887,7 +8887,7 @@
         },
         {
             "episode": 77,
-            "rating": 6.3,
+            "rating": 6.5,
             "id": "tt39701519"
         },
         {
@@ -8947,7 +8947,7 @@
         },
         {
             "episode": 89,
-            "rating": 7.4,
+            "rating": 7.5,
             "id": "tt40767329"
         },
         {
@@ -8962,12 +8962,12 @@
         },
         {
             "episode": 92,
-            "rating": 7.1,
+            "rating": 7.3,
             "id": "tt40821300"
         },
         {
             "episode": 93,
-            "rating": 7.2,
+            "rating": 7.4,
             "id": "tt40821301"
         },
         {
@@ -8977,12 +8977,12 @@
         },
         {
             "episode": 95,
-            "rating": 7.3,
+            "rating": 7.5,
             "id": "tt41157374"
         },
         {
             "episode": 96,
-            "rating": 8.0,
+            "rating": 8.1,
             "id": "tt41157376"
         },
         {
@@ -9012,13 +9012,18 @@
         },
         {
             "episode": 102,
-            "rating": 7.4,
+            "rating": 7.5,
             "id": "tt41157384"
         },
         {
             "episode": 103,
-            "rating": 6.5,
+            "rating": 6.9,
             "id": "tt41157380"
+        },
+        {
+            "episode": 104,
+            "rating": 7.3,
+            "id": "tt41157385"
         }
     ]
 ]
