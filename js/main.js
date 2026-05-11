@@ -12,8 +12,32 @@ const showTitleEl = document.getElementById("show-title");
 const imdbLink = document.getElementById("imdb-link");
 const legend = document.getElementById("legend");
 const tooltip = document.getElementById("tooltip");
+const themeToggle = document.getElementById("theme-toggle");
 
 
+/* ============================================
+   THEME TOGGLE
+   ============================================ */
+function getTheme() {
+    return document.documentElement.getAttribute("data-theme") || "light";
+}
+
+function setTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("imdb-heatmap-theme", theme);
+}
+
+function toggleTheme() {
+    const current = getTheme();
+    setTheme(current === "light" ? "dark" : "light");
+}
+
+themeToggle.addEventListener("click", toggleTheme);
+
+
+/* ============================================
+   CACHE BUSTING
+   ============================================ */
 function getSuffix(){
     const now = new Date();
     const hour = now.getUTCHours();
@@ -29,6 +53,9 @@ function getSuffix(){
 }
 
 
+/* ============================================
+   DATA LOADING
+   ============================================ */
 async function loadTopSeries() {
     let promise = await fetch(TITLE_ID_URL);
     let processedData = await promise.json();
@@ -55,16 +82,14 @@ function addToSearch(titleIds) {
    ============================================ */
 function colorValue(rating) {
     let backgroundColor;
-    let color;
+    let color = "#fff";
     const cutoff = 6;
     if (rating > cutoff) {
         const normalized = (rating - cutoff) / (10 - cutoff);
         backgroundColor = `hsl(${normalized * 120}, 75%, 45%)`;
-        color = "#fff";
     } else {
         const lightness = (rating / cutoff) * 40 + 10;
         backgroundColor = `hsl(0, 70%, ${lightness}%)`;
-        color = "#fff";
     }
     return [backgroundColor, color];
 }
@@ -167,6 +192,9 @@ function cellUnhover(event) {
 }
 
 
+/* ============================================
+   SEARCH / TABLE CREATION
+   ============================================ */
 function findTitleId(titleIds, titleLower) {
     let id;
     let title;
@@ -212,8 +240,8 @@ async function createTable(titleIds) {
     showTitleEl.textContent = title;
     imdbLink.href = `${IMDB_URL}${id}/`;
     showTitleBar.style.display = "flex";
+    // Restart animation
     showTitleBar.style.animation = "none";
-    // Trigger reflow to restart animation
     showTitleBar.offsetHeight;
     showTitleBar.style.animation = "";
 
@@ -268,26 +296,9 @@ function cleanTable() {
 }
 
 
-async function init() {
-    const titleIds = await loadTopSeries();
-    addToSearch(titleIds);
-    console.log("Loaded search data");
-    search.disabled = false;
-    search.addEventListener("change", function() {
-        cleanTable();
-        createTable(titleIds)
-    });
-    window.addEventListener("popstate", checkUrl);
-
-    loadStatus.innerHTML = "Ready — search for a show above";
-    loadStatus.className = "load-status ready";
-
-    console.log("enabled search");
-    checkUrl();
-    search.focus();
-}
-
-
+/* ============================================
+   URL STATE
+   ============================================ */
 function checkUrl() {
     let title = getUrl();
     if (title) {
@@ -309,6 +320,29 @@ function getUrl() {
     let url = new URL(window.location);
     let title = url.searchParams.get("title");
     return title;
+}
+
+
+/* ============================================
+   INIT
+   ============================================ */
+async function init() {
+    const titleIds = await loadTopSeries();
+    addToSearch(titleIds);
+    console.log("Loaded search data");
+    search.disabled = false;
+    search.addEventListener("change", function() {
+        cleanTable();
+        createTable(titleIds)
+    });
+    window.addEventListener("popstate", checkUrl);
+
+    loadStatus.innerHTML = "Ready — search for a show above";
+    loadStatus.className = "load-status ready";
+
+    console.log("enabled search");
+    checkUrl();
+    search.focus();
 }
 
 
