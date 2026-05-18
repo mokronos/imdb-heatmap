@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
     <head>
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEB6DH7P11"></script>
@@ -7,26 +7,99 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'G-GEB6DH7P11');
         </script>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="google-site-verification" content="wHBdY5bT40vW_pXkSgIZBl7dPyil6v5OXbA1rHZHERk" />
         <meta name="description" content="IMDb-heatmap lets users search for their favorite TV-show and displays the IMDb ratings of all episodes in a heatmap." />
-        <link href="https://fonts.googleapis.com/css2?family=Grandstander:wght@700;900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/styles.css" />
-        <title class="title">IMDb Heatmaps - Get an overview over your favorite TV show's IMDb ratings</title>
+        <title>IMDb Heatmaps — Episode ratings at a glance</title>
         <link rel="icon" href="#" />
+        <!-- Prevent FOUC: apply saved theme before render -->
+        <script>
+          (function() {
+            var t = localStorage.getItem('imdb-heatmap-theme');
+            if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+          })();
+        </script>
     </head>
     <body>
-        <h1 class="heading1">TV Show Heatmap (IMDb Ratings)</h1>
-        <input placeholder="Search for TV show" type="text" class="search" list="search" disabled/>
-        <datalist class="optionlist" id="search"> </datalist>
-        <h1 class="loadStatus">Loading...</h1>
-        <table class="ratingsTable"></table>
-        <p class="footer"> Made by <a href="https://github.com/Mokronos" target="_blank">Mokronos</a>. Project <a href="https://github.com/Mokronos/imdb-heatmap" target="_blank">here</a>.</p>
-        <p class="footer">Data from <a href="https://www.imdb.com/interfaces/" target="_blank">IMDb</a>. Top 2500 shows by votes (for now). Gets updated once every day.</p>
+        <!-- Theme Toggle (fixed) -->
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+            <svg class="theme-icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="theme-icon moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>
+
+        <!-- Hero Section -->
+        <header class="hero" id="hero">
+            <div class="hero-inner">
+                <p class="hero-label">IMDB HEATMAP</p>
+                <h1 class="hero-title">Episode ratings,<br>visualized.</h1>
+                <p class="hero-subtitle">Search for any TV show and see every episode rating as a beautiful color-coded heatmap. Updated daily from IMDb's top 2,500 shows.</p>
+                <div class="search-wrapper" id="search-wrapper">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input placeholder="Search for a TV show…" type="text" class="search" id="search-input" list="search" disabled autocomplete="off"/>
+                    <datalist class="optionlist" id="search"> </datalist>
+                </div>
+                <p class="load-status" id="load-status">Loading show database…</p>
+            </div>
+        </header>
+
+        <!-- Heatmap Section -->
+        <main class="heatmap-section" id="heatmap-section">
+            <div class="heatmap-container">
+                <div class="show-title-bar" id="show-title-bar" style="display:none;">
+                    <h2 class="show-title" id="show-title"></h2>
+                    <a class="imdb-link" id="imdb-link" href="#" target="_blank">View on IMDb ↗</a>
+                </div>
+                <div class="heatmap-scroll">
+                    <table class="ratingsTable" id="ratings-table"></table>
+                </div>
+                <!-- Legend -->
+                <div class="legend" id="legend" style="display:none;">
+                    <span class="legend-label">Low</span>
+                    <div class="legend-bar"></div>
+                    <span class="legend-label">High</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- Tooltip -->
+        <div class="tooltip" id="tooltip"></div>
+
+        <!-- Footer -->
+        <footer class="site-footer" id="site-footer">
+            <div class="footer-inner">
+                <div class="footer-left">
+                    <p class="footer-brand">IMDb Heatmap</p>
+                    <p class="footer-meta">Data from <a href="https://www.imdb.com/interfaces/" target="_blank">IMDb</a>. Top 2,500 shows by votes. Updated daily.</p>
+                </div>
+                <div class="footer-right">
+                    <p class="footer-meta">Made by <a href="https://github.com/Mokronos" target="_blank">Mokronos</a></p>
+                    <p class="footer-meta"><a href="https://github.com/Mokronos/imdb-heatmap" target="_blank">Source on GitHub</a></p>
+                </div>
+            </div>
+        </footer>
+
         <script src="js/main.js"></script>
     </body>
 </html>
