@@ -6439,7 +6439,7 @@
         },
         {
             "episode": 149,
-            "rating": 5.5,
+            "rating": 5.6,
             "id": "tt21072726"
         },
         {
@@ -6841,7 +6841,7 @@
         },
         {
             "episode": 58,
-            "rating": 3.9,
+            "rating": 3.8,
             "id": "tt23862520"
         },
         {
@@ -8507,7 +8507,7 @@
     [
         {
             "episode": 1,
-            "rating": 6.8,
+            "rating": 7.0,
             "id": "tt37803720"
         },
         {
@@ -8812,7 +8812,7 @@
         },
         {
             "episode": 62,
-            "rating": 7.2,
+            "rating": 7.3,
             "id": "tt39373487"
         },
         {
@@ -9042,7 +9042,7 @@
         },
         {
             "episode": 108,
-            "rating": 7.7,
+            "rating": 7.8,
             "id": "tt41157388"
         },
         {
@@ -9052,7 +9052,7 @@
         },
         {
             "episode": 110,
-            "rating": 6.9,
+            "rating": 6.7,
             "id": "tt41157391"
         },
         {
@@ -9062,28 +9062,38 @@
         },
         {
             "episode": 112,
-            "rating": 6.5,
+            "rating": 6.7,
             "id": "tt42628733"
         },
         {
             "episode": 113,
-            "rating": 7.3,
+            "rating": 7.8,
             "id": "tt42655045"
         },
         {
             "episode": 114,
-            "rating": 8.2,
+            "rating": 8.3,
             "id": "tt42694048"
         },
         {
             "episode": 115,
-            "rating": 6.0,
+            "rating": 6.3,
             "id": "tt42721580"
         },
         {
             "episode": 116,
-            "rating": 8.0,
+            "rating": 8.1,
             "id": "tt42721587"
+        },
+        {
+            "episode": 117,
+            "rating": 8.0,
+            "id": "tt42721586"
+        },
+        {
+            "episode": 118,
+            "rating": 8.9,
+            "id": "tt42721579"
         }
     ]
 ]
