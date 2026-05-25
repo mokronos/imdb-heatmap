@@ -240,13 +240,18 @@
         },
         {
             "episode": 7,
-            "rating": 8.0,
+            "rating": 8.1,
             "id": "tt35287432"
         },
         {
             "episode": 8,
             "rating": 7.9,
             "id": "tt35287542"
+        },
+        {
+            "episode": 9,
+            "rating": 7.5,
+            "id": "tt35287629"
         }
     ]
 ]
