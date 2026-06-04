@@ -1,6 +1,7 @@
 name: Run Script
 
 on:
+  workflow_dispatch:
   push:
     branches: [ main ]
   schedule:
@@ -8,8 +9,9 @@ on:
 jobs:
 
   create:
-    if: ${{contains(github.event.head_commit.message, 'data update')
-          || github.event_name == 'schedule'}}
+    if: ${{github.event_name == 'workflow_dispatch'
+          || github.event_name == 'schedule'
+          || contains(github.event.head_commit.message, 'data update')}}
     name: create dataset
     runs-on: ubuntu-latest
     steps:
