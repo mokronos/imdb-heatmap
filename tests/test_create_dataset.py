@@ -92,6 +92,18 @@ def test_empty_show_dataframe():
     print("test_empty_show_dataframe passed")
 
 
+def test_format_display_title_with_year_and_id():
+    result = cd.format_display_title("tt1234567", {"primaryTitle": "Example", "startYear": "1999"})
+    assert result == "Example (1999) [tt1234567]"
+    print("test_format_display_title_with_year_and_id passed")
+
+
+def test_format_display_title_without_year():
+    result = cd.format_display_title("tt1234567", {"primaryTitle": "Example", "startYear": "\\N"})
+    assert result == "Example [tt1234567]"
+    print("test_format_display_title_without_year passed")
+
+
 def test_matches_existing_data_format():
     with open("data/tt0118273.json") as f:
         existing = json.load(f)
@@ -111,5 +123,7 @@ if __name__ == "__main__":
     test_missing_rating()
     test_empty_show_none()
     test_empty_show_dataframe()
+    test_format_display_title_with_year_and_id()
+    test_format_display_title_without_year()
     test_matches_existing_data_format()
     print("all tests passed")

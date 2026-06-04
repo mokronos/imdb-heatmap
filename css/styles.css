@@ -17,6 +17,58 @@ td, th {
     color: red;
 }
 
+.searchWrap {
+    position: relative;
+    width: min(420px, 100%);
+}
+
+.search {
+    width: 100%;
+}
+
+.optionlist {
+    position: absolute;
+    z-index: 10;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    border: 1px solid #555;
+    border-radius: 8px;
+    background: #222;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+}
+
+.option {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+    border: 0;
+    border-bottom: 1px solid #3b3b3b;
+    background: transparent;
+    color: #fff;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.option:last-child {
+    border-bottom: 0;
+}
+
+.option:hover,
+.option:focus {
+    background: #444;
+    outline: none;
+}
+
+.showPoster {
+    width: 180px;
+    max-width: 60vw;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
 .guideColumnCell, .guideRowCell {
     background-color: #474540;
 }
@@ -45,4 +97,3 @@ td, th {
 .footer a {
     color: #fff;
 }
-

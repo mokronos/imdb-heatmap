@@ -45,16 +45,24 @@ def load_title_lookup(title_ids):
 
     for chunk in pd.read_csv(
         io.BytesIO(fetch(NAMES_URL)),
-        header=0, usecols=["tconst", "primaryTitle"],
+        header=0, usecols=["tconst", "primaryTitle", "startYear"],
         compression="gzip", sep="\t", dtype=str,
         chunksize=100_000,
     ):
         matches = chunk[chunk["tconst"].isin(wanted)]
-        titles.update(matches.set_index("tconst")["primaryTitle"].to_dict())
+        titles.update(matches.set_index("tconst").to_dict("index"))
         if len(titles) == len(wanted):
             break
 
     return titles
+
+
+def format_display_title(title_id, title_meta):
+    year = title_meta.get("startYear")
+    title = title_meta["primaryTitle"]
+    if year and year != "\\N":
+        return f"{title} ({year}) [{title_id}]"
+    return f"{title} [{title_id}]"
 
 
 def gen_season_ratings(parent_id, show_episodes, ratings):
@@ -128,7 +136,15 @@ def main():
     name_lookup = load_title_lookup(top_ids)
     print(f"loaded selected names: {len(name_lookup)} rows")
 
-    title_ids = [{"id": t, "title": name_lookup[t]} for t in top_ids]
+    title_ids = [
+        {
+            "id": t,
+            "title": name_lookup[t]["primaryTitle"],
+            "startYear": name_lookup[t].get("startYear"),
+            "displayTitle": format_display_title(t, name_lookup[t]),
+        }
+        for t in top_ids
+    ]
     with open(f"{DATA_DIR}titleId.json", "w") as f:
         json.dump(title_ids, f, indent=4)
     print("wrote titleId.json")

@@ -5,10 +5,13 @@ const IMDB_URL = "https://www.imdb.com/title/";
 
 const targetTable = document.querySelector(".ratingsTable");
 const search = document.querySelector(".search");
-const optionList = document.getElementById("search");
+const optionList = document.querySelector(".optionlist");
 const loadStatus = document.querySelector(".loadStatus");
+const showPoster = document.querySelector(".showPoster");
 const fontWeightNormal = "700";
 const fontWeightBig = "900";
+const maxSuggestions = 8;
+let selectedShowId = null;
 
 
 function getSuffix(){
@@ -33,17 +36,66 @@ async function loadTopSeries() {
 }
 
 
-function addOption(value) {
-    let option = document.createElement("option");
-    option.value = value;
-    optionList.appendChild(option);
+function getPosterUrl(id) {
+    return `https://images.metahub.space/poster/medium/${id}/img`;
 }
 
 
-function addToSearch(titleIds) {
-    titleIds.forEach(titleId => {
-        addOption(titleId.title);
+function getDisplayTitle(titleId) {
+    if (titleId.startYear && titleId.startYear !== "\\N") {
+        return `${titleId.title} (${titleId.startYear})`;
+    }
+    return titleId.title;
+}
+
+
+function clearSuggestions() {
+    optionList.innerHTML = "";
+    optionList.hidden = true;
+}
+
+
+function findSuggestions(titleIds, query) {
+    const queryLower = query.trim().toLowerCase();
+    if (!queryLower) {
+        return [];
+    }
+
+    return titleIds.filter(titleId => {
+        const displayTitle = getDisplayTitle(titleId).toLowerCase();
+        const id = titleId.id.toLowerCase();
+        return displayTitle.includes(queryLower) || id.includes(queryLower);
+    }).slice(0, maxSuggestions);
+}
+
+
+function renderSuggestions(titleIds) {
+    const suggestions = findSuggestions(titleIds, search.value);
+    optionList.innerHTML = "";
+
+    if (!suggestions.length) {
+        clearSuggestions();
+        return;
+    }
+
+    suggestions.forEach(titleId => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "option";
+        button.textContent = getDisplayTitle(titleId);
+        button.addEventListener("mousedown", function(event) {
+            event.preventDefault();
+        });
+        button.addEventListener("click", function() {
+            selectedShowId = titleId.id;
+            search.value = getDisplayTitle(titleId);
+            clearSuggestions();
+            search.dispatchEvent(new Event("change"));
+        });
+        optionList.appendChild(button);
     });
+
+    optionList.hidden = false;
 }
 
 
@@ -63,7 +115,7 @@ function addTableRow(episodeRatings, seasonNumber) {
         let episodeLink = document.createElement("a");
         episodeLink.href = episodeUrl;
         episodeLink.target = "_blank";
-        episodeLink.innerHTML = episodeRating;
+        episodeLink.innerHTML = episodeRating.toFixed(1);
         episodeLink.className = `s${seasonNumber}ep${episodeNumber} episodeLink`;
         episodeLink.addEventListener("mouseover", cellHover);
         episodeRatingCell.appendChild(episodeLink);
@@ -128,31 +180,41 @@ function cellUnhover(event) {
 }
 
 function findTitleId(titleIds, titleLower) {
-    let id;
-    let title;
     for (let i = 0; i < titleIds.length; i++) {
-        if (titleIds[i].title.toLowerCase() === titleLower) {
-            id = titleIds[i].id;
-            title = titleIds[i].title;
-            return [id, title];
+        const displayTitle = getDisplayTitle(titleIds[i]);
+        const title = titleIds[i].title;
+        const displayTitleWithId = titleIds[i].displayTitle;
+        if (
+            displayTitle.toLowerCase() === titleLower ||
+            title.toLowerCase() === titleLower ||
+            (displayTitleWithId && displayTitleWithId.toLowerCase() === titleLower) ||
+            titleIds[i].id.toLowerCase() === titleLower
+        ) {
+            return titleIds[i];
         };
     };
-    return [0,0];
+    return null;
 }
 
 
 async function createTable(titleIds) {
     let searchValue = search.value;
     let searchLower = searchValue.toLowerCase();
-    let [id, title] = findTitleId(titleIds, searchLower);
+    let show = selectedShowId
+        ? findTitleId(titleIds, selectedShowId.toLowerCase())
+        : findTitleId(titleIds, searchLower);
+    selectedShowId = null;
 
-    if (id === 0) {
+    if (!show) {
         console.log("Title not found!");
         loadStatus.innerHTML = "Title not found";
         loadStatus.style.color = "red";
+        showPoster.hidden = true;
         return;
     }
 
+    const id = show.id;
+    const title = getDisplayTitle(show);
     const promise = await fetch(SERIES_URL + id + ".json");
     const allRatings = await promise.json();
     seasonNumber = 1;
@@ -167,9 +229,11 @@ async function createTable(titleIds) {
     addGuide(seasonNumber - 1, maxEpisodes);
     loadStatus.innerHTML = title;
     loadStatus.style.color = "white";
+    showPoster.src = getPosterUrl(id);
+    showPoster.hidden = false;
     document.title = `Series Heatmap - ${title}`;
-    if (getUrl() !== title) {
-        setUrl(title);
+    if (getUrl() !== id) {
+        setUrl(id);
     }
     search.value = "";
 }
@@ -212,12 +276,30 @@ function cleanTable() {
 
 async function init() {
     const titleIds = await loadTopSeries();
-    addToSearch(titleIds);
     console.log("Loaded search data");
     search.disabled = false;
+    search.addEventListener("input", function() {
+        selectedShowId = null;
+        renderSuggestions(titleIds);
+    });
+    search.addEventListener("keydown", function(event) {
+        if (event.key === "Enter" && !findTitleId(titleIds, search.value.toLowerCase())) {
+            const firstSuggestion = findSuggestions(titleIds, search.value)[0];
+            if (firstSuggestion) {
+                selectedShowId = firstSuggestion.id;
+                search.value = getDisplayTitle(firstSuggestion);
+            }
+        }
+    });
     search.addEventListener("change", function() {
         cleanTable();
-        createTable(titleIds)
+        clearSuggestions();
+        createTable(titleIds);
+    });
+    document.addEventListener("click", function(event) {
+        if (!event.target.closest(".searchWrap")) {
+            clearSuggestions();
+        }
     });
     window.addEventListener("popstate", checkUrl);
     loadStatus.innerHTML = "Ready!";
@@ -229,17 +311,17 @@ async function init() {
 
 
 function checkUrl() {
-    let title = getUrl();
-    if (title) {
-        search.value = title;
+    let showId = getUrl();
+    if (showId) {
+        search.value = showId;
         search.dispatchEvent(new Event("change"));
     }
 }
 
 
-function setUrl(title) {
+function setUrl(id) {
     let url = new URL(window.location);
-    url.searchParams.set("title", title);
+    url.searchParams.set("id", id);
     newUrl = window.location.pathname + "?" + url.searchParams.toString();
     history.pushState({}, "", newUrl);
 }
@@ -247,8 +329,7 @@ function setUrl(title) {
 
 function getUrl() {
     let url = new URL(window.location);
-    let title = url.searchParams.get("title");
-    return title;
+    return url.searchParams.get("id") ?? url.searchParams.get("title");
 }
 
 
