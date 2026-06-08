@@ -63,17 +63,66 @@ async function loadTopSeries() {
 }
 
 
-function addOption(value) {
-    let option = document.createElement("option");
-    option.value = value;
-    optionList.appendChild(option);
+function getPosterUrl(id) {
+    return `https://images.metahub.space/poster/medium/${id}/img`;
 }
 
 
-function addToSearch(titleIds) {
-    titleIds.forEach(titleId => {
-        addOption(titleId.title);
+function getDisplayTitle(titleId) {
+    if (titleId.startYear && titleId.startYear !== "\\N") {
+        return `${titleId.title} (${titleId.startYear})`;
+    }
+    return titleId.title;
+}
+
+
+function clearSuggestions() {
+    optionList.innerHTML = "";
+    optionList.hidden = true;
+}
+
+
+function findSuggestions(titleIds, query) {
+    const queryLower = query.trim().toLowerCase();
+    if (!queryLower) {
+        return [];
+    }
+
+    return titleIds.filter(titleId => {
+        const displayTitle = getDisplayTitle(titleId).toLowerCase();
+        const id = titleId.id.toLowerCase();
+        return displayTitle.includes(queryLower) || id.includes(queryLower);
+    }).slice(0, maxSuggestions);
+}
+
+
+function renderSuggestions(titleIds) {
+    const suggestions = findSuggestions(titleIds, search.value);
+    optionList.innerHTML = "";
+
+    if (!suggestions.length) {
+        clearSuggestions();
+        return;
+    }
+
+    suggestions.forEach(titleId => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "option";
+        button.textContent = getDisplayTitle(titleId);
+        button.addEventListener("mousedown", function(event) {
+            event.preventDefault();
+        });
+        button.addEventListener("click", function() {
+            selectedShowId = titleId.id;
+            search.value = getDisplayTitle(titleId);
+            clearSuggestions();
+            search.dispatchEvent(new Event("change"));
+        });
+        optionList.appendChild(button);
     });
+
+    optionList.hidden = false;
 }
 
 
@@ -114,7 +163,7 @@ function addTableRow(episodeRatings, seasonNumber) {
         let episodeLink = document.createElement("a");
         episodeLink.href = episodeUrl;
         episodeLink.target = "_blank";
-        episodeLink.innerHTML = episodeRating;
+        episodeLink.innerHTML = episodeRating.toFixed(1);
         episodeLink.className = `s${seasonNumber}ep${episodeNumber} episodeLink`;
 
         // Store metadata for tooltip
@@ -196,25 +245,32 @@ function cellUnhover(event) {
    SEARCH / TABLE CREATION
    ============================================ */
 function findTitleId(titleIds, titleLower) {
-    let id;
-    let title;
     for (let i = 0; i < titleIds.length; i++) {
-        if (titleIds[i].title.toLowerCase() === titleLower) {
-            id = titleIds[i].id;
-            title = titleIds[i].title;
-            return [id, title];
+        const displayTitle = getDisplayTitle(titleIds[i]);
+        const title = titleIds[i].title;
+        const displayTitleWithId = titleIds[i].displayTitle;
+        if (
+            displayTitle.toLowerCase() === titleLower ||
+            title.toLowerCase() === titleLower ||
+            (displayTitleWithId && displayTitleWithId.toLowerCase() === titleLower) ||
+            titleIds[i].id.toLowerCase() === titleLower
+        ) {
+            return titleIds[i];
         };
     };
-    return [0,0];
+    return null;
 }
 
 
 async function createTable(titleIds) {
     let searchValue = search.value;
     let searchLower = searchValue.toLowerCase();
-    let [id, title] = findTitleId(titleIds, searchLower);
+    let show = selectedShowId
+        ? findTitleId(titleIds, selectedShowId.toLowerCase())
+        : findTitleId(titleIds, searchLower);
+    selectedShowId = null;
 
-    if (id === 0) {
+    if (!show) {
         console.log("Title not found!");
         loadStatus.innerHTML = "Title not found — try another search";
         loadStatus.className = "load-status error";
@@ -223,6 +279,8 @@ async function createTable(titleIds) {
         return;
     }
 
+    const id = show.id;
+    const title = getDisplayTitle(show);
     const promise = await fetch(SERIES_URL + id + ".json");
     const allRatings = await promise.json();
     let seasonNumber = 1;
@@ -300,15 +358,15 @@ function cleanTable() {
    URL STATE
    ============================================ */
 function checkUrl() {
-    let title = getUrl();
-    if (title) {
-        search.value = title;
+    let showId = getUrl();
+    if (showId) {
+        search.value = showId;
         search.dispatchEvent(new Event("change"));
     }
 }
 
 
-function setUrl(title) {
+function setUrl(id) {
     let url = new URL(window.location);
     url.searchParams.set("title", title);
     let newUrl = window.location.pathname + "?" + url.searchParams.toString();
@@ -318,8 +376,7 @@ function setUrl(title) {
 
 function getUrl() {
     let url = new URL(window.location);
-    let title = url.searchParams.get("title");
-    return title;
+    return url.searchParams.get("id") ?? url.searchParams.get("title");
 }
 
 

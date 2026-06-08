@@ -1,6 +1,7 @@
 name: Run Script
 
 on:
+  workflow_dispatch:
   push:
     branches: [ main ]
   schedule:
@@ -8,20 +9,21 @@ on:
 jobs:
 
   create:
-    if: ${{contains(github.event.head_commit.message, 'data update')
-          || github.event_name == 'schedule'}}
+    if: ${{github.event_name == 'workflow_dispatch'
+          || github.event_name == 'schedule'
+          || contains(github.event.head_commit.message, 'data update')}}
     name: create dataset
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-      - name: Set up Python 3.8
-        uses: actions/setup-python@v4
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.8'
+          python-version: '3.11'
+          cache: 'pip'
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
           pip install -r requirements.txt
       - name: clean dir
         run: |

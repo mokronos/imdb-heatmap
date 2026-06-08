@@ -5,6 +5,23 @@ import NumberBox from './NumberBox';
 import { useParams } from '@solidjs/router';
 import { prepareData } from './utils';
 
+type ShowMeta = {
+    id: string;
+    title: string;
+    startYear?: string;
+    displayTitle?: string;
+};
+
+const emptyShow: ShowMeta = {"id": "", "title": ""};
+
+function getDisplayTitle(show: ShowMeta) {
+    return show.displayTitle ?? show.title;
+}
+
+function getPosterUrl(id: string) {
+    return `https://images.metahub.space/poster/medium/${id}/img`;
+}
+
 const App: Component = (props) => {
 
     async function fetchShow(id: string) {
@@ -20,7 +37,7 @@ const App: Component = (props) => {
         return resp.json();
     }
 
-    const [currentShow, setShow] = createSignal({"id": "", "title": ""});
+    const [currentShow, setShow] = createSignal<ShowMeta>(emptyShow);
     const [query, setQuery] = createSignal("");
     const [showData] = createResource(() => currentShow().id, fetchShow);
     const [showMetas] = createResource(fetchShowMetas);
@@ -31,7 +48,10 @@ const App: Component = (props) => {
             return [];
         }
         if (showMetas()) {
-            return showMetas().filter((show) => show.title.toLowerCase().includes(query().toLowerCase())).slice(0, 5);
+            return showMetas().filter((show: ShowMeta) => {
+                const searchText = `${getDisplayTitle(show)} ${show.id}`.toLowerCase();
+                return searchText.includes(query().toLowerCase());
+            }).slice(0, 5);
         }
 
     }
@@ -39,7 +59,7 @@ const App: Component = (props) => {
     createEffect(() => {
         var id = useParams().id
         if (id && showMetas()) {
-            setShow(showMetas().find((show) => show.id == id))
+            setShow(showMetas().find((show: ShowMeta) => show.id == id) ?? emptyShow)
         }
         console.log(id)
         console.log(currentShow())
@@ -64,13 +84,21 @@ const App: Component = (props) => {
                 {(show) => (
                     <>
                         <li class="content-center py-2 list-none">
-                            <a href={`/${show.id}`} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">{show.title}</a>
+                            <a href={`/${show.id}`} class="inline-flex items-center gap-3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                <img src={getPosterUrl(show.id)} alt={`${show.title} poster`} class="h-16 w-11 rounded object-cover bg-neutral-800" loading="lazy" />
+                                <span>{getDisplayTitle(show)}</span>
+                            </a>
                         </li>
                     </>
                 )}
             </For>
 
-            <div>Current Show: {currentShow().title}</div>
+            <Show when={currentShow().id}>
+                <div class="flex items-center gap-4 py-4">
+                    <img src={getPosterUrl(currentShow().id)} alt={`${currentShow().title} poster`} class="h-28 w-20 rounded object-cover bg-neutral-800" />
+                    <div>Current Show: {getDisplayTitle(currentShow())}</div>
+                </div>
+            </Show>
 
             <For each={preppedData()}>
                 {(row) => (
