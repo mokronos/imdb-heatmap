@@ -3,17 +3,41 @@ const TITLE_ID_URL = "./data/titleId.json";
 const NO_CACHE_SUFFIX = getSuffix();
 const IMDB_URL = "https://www.imdb.com/title/";
 
-const targetTable = document.querySelector(".ratingsTable");
-const search = document.querySelector(".search");
-const optionList = document.querySelector(".optionlist");
-const loadStatus = document.querySelector(".loadStatus");
-const showPoster = document.querySelector(".showPoster");
-const fontWeightNormal = "700";
-const fontWeightBig = "900";
-const maxSuggestions = 8;
-let selectedShowId = null;
+const targetTable = document.getElementById("ratings-table");
+const search = document.getElementById("search-input");
+const optionList = document.getElementById("search");
+const loadStatus = document.getElementById("load-status");
+const showTitleBar = document.getElementById("show-title-bar");
+const showTitleEl = document.getElementById("show-title");
+const imdbLink = document.getElementById("imdb-link");
+const legend = document.getElementById("legend");
+const tooltip = document.getElementById("tooltip");
+const themeToggle = document.getElementById("theme-toggle");
 
 
+/* ============================================
+   THEME TOGGLE
+   ============================================ */
+function getTheme() {
+    return document.documentElement.getAttribute("data-theme") || "light";
+}
+
+function setTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("imdb-heatmap-theme", theme);
+}
+
+function toggleTheme() {
+    const current = getTheme();
+    setTheme(current === "light" ? "dark" : "light");
+}
+
+themeToggle.addEventListener("click", toggleTheme);
+
+
+/* ============================================
+   CACHE BUSTING
+   ============================================ */
 function getSuffix(){
     const now = new Date();
     const hour = now.getUTCHours();
@@ -29,6 +53,9 @@ function getSuffix(){
 }
 
 
+/* ============================================
+   DATA LOADING
+   ============================================ */
 async function loadTopSeries() {
     let promise = await fetch(TITLE_ID_URL);
     let processedData = await promise.json();
@@ -99,13 +126,34 @@ function renderSuggestions(titleIds) {
 }
 
 
+/* ============================================
+   COLOR SCALE — refined for visual clarity
+   ============================================ */
+function colorValue(rating) {
+    let backgroundColor;
+    let color = "#fff";
+    const cutoff = 6;
+    if (rating > cutoff) {
+        const normalized = (rating - cutoff) / (10 - cutoff);
+        backgroundColor = `hsl(${normalized * 120}, 75%, 45%)`;
+    } else {
+        const lightness = (rating / cutoff) * 40 + 10;
+        backgroundColor = `hsl(0, 70%, ${lightness}%)`;
+    }
+    return [backgroundColor, color];
+}
+
+
+/* ============================================
+   TABLE RENDERING
+   ============================================ */
 function addTableRow(episodeRatings, seasonNumber) {
     let seasonRow = document.createElement("tr");
     seasonRow.className = `season${seasonNumber}`;
     targetTable.appendChild(seasonRow);
-    episodeCount = 0;
-    episodeRatings.forEach(episodeData => {
+    let episodeCount = 0;
 
+    episodeRatings.forEach(episodeData => {
         let episodeRating = episodeData.rating;
         let episodeNumber = episodeData.episode;
         let episodeId = episodeData.id;
@@ -117,12 +165,22 @@ function addTableRow(episodeRatings, seasonNumber) {
         episodeLink.target = "_blank";
         episodeLink.innerHTML = episodeRating.toFixed(1);
         episodeLink.className = `s${seasonNumber}ep${episodeNumber} episodeLink`;
+
+        // Store metadata for tooltip
+        episodeLink.dataset.season = seasonNumber;
+        episodeLink.dataset.episode = episodeNumber;
+        episodeLink.dataset.rating = episodeRating;
+
         episodeLink.addEventListener("mouseover", cellHover);
+        episodeLink.addEventListener("mouseout", cellUnhover);
+        episodeLink.addEventListener("mousemove", moveTooltip);
+
         episodeRatingCell.appendChild(episodeLink);
         episodeRatingCell.className = `s${seasonNumber}ep${episodeNumber} tableCell`;
-        let [backgroundColor, color] = colorValue(episodeRating);
+
+        let [backgroundColor, textColor] = colorValue(episodeRating);
         episodeRatingCell.style.backgroundColor = backgroundColor;
-        episodeLink.style.color = color;
+        episodeLink.style.color = textColor;
 
         seasonRow.appendChild(episodeRatingCell);
         episodeCount++;
@@ -131,54 +189,61 @@ function addTableRow(episodeRatings, seasonNumber) {
 }
 
 
-function colorValue(rating) {
-    let backgroundColor;
-    let color
-    const cutoff = 6;
-    if (rating > cutoff) {
-        rating -= cutoff;
-        backgroundColor = `hsl(${rating/(10-cutoff)*120}, 100%, 50%)`;
-    } else {
-        backgroundColor = `hsl(0, 100%, ${rating/cutoff*50}%)`;
-        color = "white";
-    }
-    return [backgroundColor, color];
+/* ============================================
+   TOOLTIP
+   ============================================ */
+function moveTooltip(event) {
+    tooltip.style.left = event.clientX + 12 + "px";
+    tooltip.style.top = event.clientY - 40 + "px";
+}
+
+function showTooltip(season, episode, rating) {
+    tooltip.innerHTML = `S${season} E${episode} — <strong>${rating}</strong>`;
+    tooltip.classList.add("visible");
+}
+
+function hideTooltip() {
+    tooltip.classList.remove("visible");
 }
 
 
+/* ============================================
+   HOVER — highlight guides + tooltip
+   ============================================ */
 function cellHover(event) {
-    // highlight season and episode from guide on hover
     let cell = event.target;
-    cell.style.fontWeight = fontWeightBig;
-    let classNameSplit = cell.className.split(" ")[0];
-    let season = classNameSplit.split("s")[1];
-    season = season.split("ep")[0];
-    let episode = classNameSplit.split("ep")[1];
-    let seasonClass = document.querySelector(`.s${season}`);
-    let episodeClass = document.querySelector(`.ep${episode}`);
-    seasonClass.style.fontWeight = fontWeightBig;
-    seasonClass.style.color = "white";
-    episodeClass.style.fontWeight = fontWeightBig;
-    episodeClass.style.color = "white";
-    cell.addEventListener("mouseout", cellUnhover);
+    let season = cell.dataset.season;
+    let episode = cell.dataset.episode;
+    let rating = cell.dataset.rating;
+
+    // Highlight guide cells
+    let seasonGuide = document.querySelector(`.s${season}.guideColumnCell`);
+    let episodeGuide = document.querySelector(`.ep${episode}.guideRowCell`);
+
+    if (seasonGuide) seasonGuide.classList.add("highlight");
+    if (episodeGuide) episodeGuide.classList.add("highlight");
+
+    showTooltip(season, episode, rating);
 }
 
 function cellUnhover(event) {
-    // remove highlight from season and episode on mouseout
     let cell = event.target;
-    cell.style.fontWeight = fontWeightNormal;
-    let classNameSplit = cell.className.split(" ")[0];
-    let season = classNameSplit.split("s")[1];
-    season = season.split("ep")[0];
-    let episode = classNameSplit.split("ep")[1];
-    let seasonClass = document.querySelector(`.s${season}`);
-    let episodeClass = document.querySelector(`.ep${episode}`);
-    seasonClass.style.fontWeight = fontWeightNormal;
-    seasonClass.style.color = "black";
-    episodeClass.style.fontWeight = fontWeightNormal;
-    episodeClass.style.color = "black";
+    let season = cell.dataset.season;
+    let episode = cell.dataset.episode;
+
+    let seasonGuide = document.querySelector(`.s${season}.guideColumnCell`);
+    let episodeGuide = document.querySelector(`.ep${episode}.guideRowCell`);
+
+    if (seasonGuide) seasonGuide.classList.remove("highlight");
+    if (episodeGuide) episodeGuide.classList.remove("highlight");
+
+    hideTooltip();
 }
 
+
+/* ============================================
+   SEARCH / TABLE CREATION
+   ============================================ */
 function findTitleId(titleIds, titleLower) {
     for (let i = 0; i < titleIds.length; i++) {
         const displayTitle = getDisplayTitle(titleIds[i]);
@@ -207,9 +272,10 @@ async function createTable(titleIds) {
 
     if (!show) {
         console.log("Title not found!");
-        loadStatus.innerHTML = "Title not found";
-        loadStatus.style.color = "red";
-        showPoster.hidden = true;
+        loadStatus.innerHTML = "Title not found — try another search";
+        loadStatus.className = "load-status error";
+        showTitleBar.style.display = "none";
+        legend.style.display = "none";
         return;
     }
 
@@ -217,7 +283,7 @@ async function createTable(titleIds) {
     const title = getDisplayTitle(show);
     const promise = await fetch(SERIES_URL + id + ".json");
     const allRatings = await promise.json();
-    seasonNumber = 1;
+    let seasonNumber = 1;
     let maxEpisodes = 0;
     allRatings.forEach(seasonRatings => {
         let numEpisodes = addTableRow(seasonRatings, seasonNumber);
@@ -227,13 +293,26 @@ async function createTable(titleIds) {
         seasonNumber++;
     });
     addGuide(seasonNumber - 1, maxEpisodes);
-    loadStatus.innerHTML = title;
-    loadStatus.style.color = "white";
-    showPoster.src = getPosterUrl(id);
-    showPoster.hidden = false;
-    document.title = `Series Heatmap - ${title}`;
-    if (getUrl() !== id) {
-        setUrl(id);
+
+    // Update show title bar
+    showTitleEl.textContent = title;
+    imdbLink.href = `${IMDB_URL}${id}/`;
+    showTitleBar.style.display = "flex";
+    // Restart animation
+    showTitleBar.style.animation = "none";
+    showTitleBar.offsetHeight;
+    showTitleBar.style.animation = "";
+
+    // Show legend
+    legend.style.display = "flex";
+
+    // Update load status
+    loadStatus.innerHTML = `Showing ${seasonNumber - 1} seasons`;
+    loadStatus.className = "load-status showing";
+
+    document.title = `IMDb Heatmap — ${title}`;
+    if (getUrl() !== title) {
+        setUrl(title);
     }
     search.value = "";
 }
@@ -242,28 +321,27 @@ async function createTable(titleIds) {
 function addGuide(maxSeasons, maxEpisodes) {
     let guideRow = document.createElement("tr");
     let guideRowCell = document.createElement("td");
-    guideRowCell.className = "guideOrigin";
-    guideRowCell.innerHTML = "S\\E";
+    guideRowCell.className = "guideOrigin tableCell";
+    guideRowCell.innerHTML = "S \\ E";
     guideRow.appendChild(guideRowCell);
 
     for (let i = 0; i < maxEpisodes; i++) {
-        let guideRowCell = document.createElement("td");
-        guideRowCell.className = `guideRowCell tableCell ep${i+1}`;
-        guideRowCell.innerHTML = i + 1;
-        guideRow.appendChild(guideRowCell);
+        let cell = document.createElement("td");
+        cell.className = `guideRowCell tableCell ep${i+1}`;
+        cell.innerHTML = i + 1;
+        guideRow.appendChild(cell);
     }
 
     guideRow.className = "guideRow";
     targetTable.insertBefore(guideRow, targetTable.firstChild);
 
     for (let i = 0; i < maxSeasons; i++) {
-        let guideColumnCell = document.createElement("td");
-        guideColumnCell.className = `guideColumnCell tableCell s${i+1}`;
-        guideColumnCell.innerHTML = i + 1;
+        let cell = document.createElement("td");
+        cell.className = `guideColumnCell tableCell s${i+1}`;
+        cell.innerHTML = i + 1;
         let seasonClass = document.querySelector(`.season${i+1}`);
-        seasonClass.insertBefore(guideColumnCell, seasonClass.firstChild);
+        seasonClass.insertBefore(cell, seasonClass.firstChild);
     }
-
 }
 
 
@@ -271,45 +349,14 @@ function cleanTable() {
     while (targetTable.firstChild) {
         targetTable.removeChild(targetTable.firstChild);
     }
+    showTitleBar.style.display = "none";
+    legend.style.display = "none";
 }
 
 
-async function init() {
-    const titleIds = await loadTopSeries();
-    console.log("Loaded search data");
-    search.disabled = false;
-    search.addEventListener("input", function() {
-        selectedShowId = null;
-        renderSuggestions(titleIds);
-    });
-    search.addEventListener("keydown", function(event) {
-        if (event.key === "Enter" && !findTitleId(titleIds, search.value.toLowerCase())) {
-            const firstSuggestion = findSuggestions(titleIds, search.value)[0];
-            if (firstSuggestion) {
-                selectedShowId = firstSuggestion.id;
-                search.value = getDisplayTitle(firstSuggestion);
-            }
-        }
-    });
-    search.addEventListener("change", function() {
-        cleanTable();
-        clearSuggestions();
-        createTable(titleIds);
-    });
-    document.addEventListener("click", function(event) {
-        if (!event.target.closest(".searchWrap")) {
-            clearSuggestions();
-        }
-    });
-    window.addEventListener("popstate", checkUrl);
-    loadStatus.innerHTML = "Ready!";
-    loadStatus.style.color = "green";
-    console.log("enabled search");
-    checkUrl();
-    search.focus();
-}
-
-
+/* ============================================
+   URL STATE
+   ============================================ */
 function checkUrl() {
     let showId = getUrl();
     if (showId) {
@@ -321,8 +368,8 @@ function checkUrl() {
 
 function setUrl(id) {
     let url = new URL(window.location);
-    url.searchParams.set("id", id);
-    newUrl = window.location.pathname + "?" + url.searchParams.toString();
+    url.searchParams.set("title", title);
+    let newUrl = window.location.pathname + "?" + url.searchParams.toString();
     history.pushState({}, "", newUrl);
 }
 
@@ -330,6 +377,29 @@ function setUrl(id) {
 function getUrl() {
     let url = new URL(window.location);
     return url.searchParams.get("id") ?? url.searchParams.get("title");
+}
+
+
+/* ============================================
+   INIT
+   ============================================ */
+async function init() {
+    const titleIds = await loadTopSeries();
+    addToSearch(titleIds);
+    console.log("Loaded search data");
+    search.disabled = false;
+    search.addEventListener("change", function() {
+        cleanTable();
+        createTable(titleIds)
+    });
+    window.addEventListener("popstate", checkUrl);
+
+    loadStatus.innerHTML = "Ready — search for a show above";
+    loadStatus.className = "load-status ready";
+
+    console.log("enabled search");
+    checkUrl();
+    search.focus();
 }
 
 
