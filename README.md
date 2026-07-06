@@ -5,7 +5,7 @@
 The idea for the site come from this [Website](https://vallandingham.me/seriesheat/#/). My main issues with the site were speed (its annoying to search) and that its not up to date.
 
 # How it works
-The python script downloads the data from imdb and saves the top 2500 shows(for now) as one metadata json file.
+The python script downloads the data from imdb and saves the top 10000 shows(for now) as one metadata json file.
 It then generates json files for every one of those IDs, containing the ratings of every episode for every season.
 
 The scripts run every 24h via a cronjob through github actions. The json files are then pushed to the repo.

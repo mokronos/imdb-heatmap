@@ -28,7 +28,7 @@ NAMES_URL = "https://datasets.imdbws.com/title.basics.tsv.gz"
 
 DATA_DIR = "data/"
 
-NUM_SHOWS = int(os.environ.get("NUM_SHOWS", 2500))
+NUM_SHOWS = int(os.environ.get("NUM_SHOWS", 10000))
 
 
 def fetch(url):

@@ -65,6 +65,9 @@ td, th {
 .showPoster {
     width: 180px;
     max-width: 60vw;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    background-color: #222;
     border-radius: 8px;
     margin-bottom: 16px;
 }

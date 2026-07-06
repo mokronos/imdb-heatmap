@@ -283,13 +283,18 @@ async function init() {
         renderSuggestions(titleIds);
     });
     search.addEventListener("keydown", function(event) {
-        if (event.key === "Enter" && !findTitleId(titleIds, search.value.toLowerCase())) {
-            const firstSuggestion = findSuggestions(titleIds, search.value)[0];
-            if (firstSuggestion) {
-                selectedShowId = firstSuggestion.id;
-                search.value = getDisplayTitle(firstSuggestion);
-            }
+        if (event.key !== "Enter") {
+            return;
         }
+        event.preventDefault();
+        const exact = findTitleId(titleIds, search.value.toLowerCase());
+        const target = exact ?? findSuggestions(titleIds, search.value)[0];
+        if (!target) {
+            return;
+        }
+        selectedShowId = target.id;
+        clearSuggestions();
+        search.dispatchEvent(new Event("change"));
     });
     search.addEventListener("change", function() {
         cleanTable();
