@@ -287,8 +287,8 @@ async function init() {
             return;
         }
         event.preventDefault();
-        const exact = findTitleId(titleIds, search.value.toLowerCase());
-        const target = exact ?? findSuggestions(titleIds, search.value)[0];
+        const target = findSuggestions(titleIds, search.value)[0]
+            ?? findTitleId(titleIds, search.value.toLowerCase());
         if (!target) {
             return;
         }
