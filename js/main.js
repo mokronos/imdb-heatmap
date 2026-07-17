@@ -294,6 +294,7 @@ async function init() {
         }
         selectedShowId = target.id;
         clearSuggestions();
+        search.blur();
         search.dispatchEvent(new Event("change"));
     });
     search.addEventListener("change", function() {
