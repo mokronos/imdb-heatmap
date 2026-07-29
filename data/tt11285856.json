@@ -2,26 +2,31 @@
     [
         {
             "episode": 1,
+            "rating": 8.5,
+            "id": "tt12099898"
+        },
+        {
+            "episode": 2,
             "rating": 8.899999618530273,
             "id": "tt12099900"
         },
         {
-            "episode": 2,
+            "episode": 3,
             "rating": 8.5,
             "id": "tt12099902"
         },
         {
-            "episode": 3,
+            "episode": 4,
             "rating": 8.399999618530273,
             "id": "tt12099904"
         },
         {
-            "episode": 4,
+            "episode": 5,
             "rating": 8.399999618530273,
             "id": "tt12099906"
         },
         {
-            "episode": 5,
+            "episode": 6,
             "rating": 9.0,
             "id": "tt12099908"
         }
