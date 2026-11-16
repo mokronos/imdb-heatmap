@@ -403,23 +403,23 @@
         },
         {
             "episode": 2,
-            "rating": 7.599999904632568,
-            "id": "tt0748462"
-        },
-        {
-            "episode": 3,
             "rating": 8.0,
             "id": "tt7799190"
         },
         {
-            "episode": 4,
+            "episode": 3,
             "rating": 8.0,
             "id": "tt7799192"
         },
         {
-            "episode": 5,
+            "episode": 4,
             "rating": 8.100000381469727,
             "id": "tt7799196"
+        },
+        {
+            "episode": 5,
+            "rating": 7.599999904632568,
+            "id": "tt0748462"
         },
         {
             "episode": 6,
